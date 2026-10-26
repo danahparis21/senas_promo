@@ -1,2284 +1,1159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>SEÑAS — Learn FSL with your whole body · Official Promo</title>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --ink: #ffffff;
-  --bg-deep: #03081a;
-  --blue: #2563eb;
-  --blue-light: #60a5fa;
-  --cyan: #38bdf8;
-  --gold: #fbbf24;
-  --gold-glow: rgba(251, 191, 36, 0.45);
-  --green: #10b981;
-  --coral: #f43f5e;
-  --purple: #8b5cf6;
-  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.2, 1.4, 0.38, 1);
-  --ease-out: cubic-bezier(0.25, 0.9, 0.3, 1);
-}
+  <meta charset="utf-8">
+  <title>SEÑAS — Launch Ad</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ease-spring: cubic-bezier(.2, 1.5, .4, 1);
+      --ease-apple: cubic-bezier(.25, .8, .25, 1)
+    }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0
+    }
 
-html, body {
-  height: 100%;
-  width: 100%;
-  background: #020510;
-  font-family: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow: hidden;
-  color: #fff;
-  transition: background 0.4s ease;
-}
+    html,
+    body {
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif
+    }
 
-body {
-  display: grid;
-  place-items: center;
-}
+    body {
+      display: grid;
+      place-items: center
+    }
 
-/* STAGE CONTAINER */
-#stage-container {
-  position: relative;
-  width: min(100vw, 177.78vh);
-  aspect-ratio: 16/9;
-  max-height: 100vh;
-  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
-  border-radius: clamp(0px, 1.2vw, 16px);
-  overflow: hidden;
-  background: var(--bg-deep);
-  container-type: size;
-}
+    #stage {
+      container-type: size;
+      position: relative;
+      width: min(100vw, 177.78vh);
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #000;
+      color: #fff
+    }
 
-#stage {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
+    .s {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      perspective: 110cqw;
+      perspective-origin: 50% 45%
+    }
 
-/* BACKGROUND ATMOSPHERE WITH DUAL-CANVAS SMOOTH CROSSFADE */
-#bg-crossfade {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-.bg-canvas {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity;
-  background-size: cover;
-  background-position: center;
-}
-.bg-canvas.active {
-  opacity: 1;
-}
+    .cam,
+    .wl {
+      position: absolute;
+      inset: 0
+    }
 
-#aurora {
-  position: absolute;
-  inset: -20%;
-  background: radial-gradient(circle at 30% 30%, rgba(37, 99, 235, 0.22), transparent 50%),
-              radial-gradient(circle at 70% 60%, rgba(56, 189, 248, 0.16), transparent 50%),
-              radial-gradient(circle at 45% 80%, rgba(251, 191, 36, 0.1), transparent 45%);
-  filter: blur(50px);
-  animation: aurora-drift 14s ease-in-out infinite alternate;
-  pointer-events: none;
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-}
+    .cam {
+      transform-style: preserve-3d
+    }
 
-@keyframes aurora-drift {
-  0% { transform: scale(1) translate(0, 0) rotate(0deg); }
-  50% { transform: scale(1.08) translate(3%, -2%) rotate(2deg); }
-  100% { transform: scale(0.96) translate(-3%, 3%) rotate(-1deg); }
-}
+    .wl {
+      z-index: 30;
+      pointer-events: none
+    }
 
-#grid-mesh {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 4cqw 4cqw;
-  mask-image: radial-gradient(ellipse at 50% 50%, #000 40%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 40%, transparent 85%);
-  pointer-events: none;
-  transition: background-image 0.8s ease;
-}
+    .b-lilac {
+      background: radial-gradient(ellipse at 50% 125%, #d6aef6, #efe3fb 42%, #fbf9ff 78%)
+    }
 
-#stage-container[data-current-theme="light"] #grid-mesh {
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-}
-#stage-container[data-current-theme="light"] #aurora {
-  opacity: 0.15;
-}
+    .b-night {
+      background: radial-gradient(ellipse at 70% 30%, #42308a, #1a1040 55%, #0a0620)
+    }
 
-/* FLOATING LIGHT PARTICLES */
-#particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.sq {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
-  animation: float-up linear infinite;
-}
-@keyframes float-up {
-  from { transform: translateY(110cqh) scale(0.7); opacity: 0; }
-  15% { opacity: 0.8; }
-  85% { opacity: 0.8; }
-  to { transform: translateY(-20cqh) scale(1.2); opacity: 0; }
-}
+    .b-blue {
+      background: radial-gradient(ellipse at 30% 20%, #2f86ff, #0f47b8 55%, #04215f)
+    }
 
-/* SCENE ARCHITECTURE */
-.sc {
-  position: absolute;
-  inset: 0;
-  visibility: hidden;
-  opacity: 0;
-  perspective: 120cqw;
-  perspective-origin: 50% 48%;
-  transition: opacity 0.35s ease, visibility 0.35s;
-  z-index: 1;
-}
-.sc.on {
-  visibility: visible;
-  opacity: 1;
-  z-index: 2;
-}
+    .b-gold {
+      background: radial-gradient(ellipse at 30% 30%, #ffd45c, #fbab1c 60%, #e8890c)
+    }
 
-/* CAMERA RIG */
-.cam {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-.on .cam {
-  animation: cam-cinematic 8s var(--ease-out) both;
-}
-@keyframes cam-cinematic {
-  0% { transform: scale(1.08) translate3d(var(--cam-x, 0), var(--cam-y, 0), 0) rotate(1.2deg); }
-  100% { transform: scale(1) translate3d(0, 0, 0) rotate(0deg); }
-}
+    .b-coral {
+      background: radial-gradient(ellipse at 30% 30%, #ff9a8b, #ff5e7e 60%, #d7385e)
+    }
 
-/* TYPOGRAPHY IN CRISP CINEMATIC WHITE (DEFAULT) */
-h2, .big {
-  font-family: 'Baloo 2', system-ui, sans-serif;
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  color: #ffffff;
-}
-.t {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44cqw;
-  z-index: 5;
-}
-.L { left: 6cqw; }
-.R { right: 5cqw; }
-.center-t {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  z-index: 5;
-}
-.h {
-  font-size: 4.8cqw;
-  color: #ffffff;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
-}
-.m {
-  font-size: 3.5cqw;
-  line-height: 1.15;
-  color: #ffffff;
-}
-.y {
-  color: var(--gold);
-  text-shadow: 0 0 25px var(--gold-glow);
-}
-.accent-blue {
-  color: var(--blue-light);
-}
+    .b-sky {
+      background: radial-gradient(ellipse at 50% 110%, #a9d4ff, #e8f3ff 60%, #fff)
+    }
 
-/* WORD SLAM ANIMATION WITH SPRING EASE */
-.k .w {
-  display: inline-block;
-  opacity: 0;
-  margin-right: 0.28em;
-  transform-origin: 50% 70%;
-  will-change: transform, opacity, filter;
-}
-.on .k .w {
-  animation: word-slam 0.5s var(--ease-spring) both;
-  animation-delay: calc(var(--i) * 0.085s + var(--d, 0s));
-}
-@keyframes word-slam {
-  from {
-    opacity: 0;
-    transform: translateY(3.5cqw) scale(1.6) rotate(-4deg);
-    filter: blur(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-    filter: blur(0px);
-  }
-}
+    .b-night::after,
+    .b-blue::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .06) 1px, transparent 1px);
+      background-size: 6cqw 6cqw;
+      -webkit-mask-image: radial-gradient(circle at 50% 40%, #000, transparent 75%);
+      mask-image: radial-gradient(circle at 50% 40%, #000, transparent 75%)
+    }
 
-.sub {
-  font-size: 1.9cqw;
-  font-weight: 700;
-  opacity: 0;
-  margin-top: 1.4cqw;
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-}
-.on .sub {
-  animation: sub-fade 0.7s var(--ease-apple) both;
-  animation-delay: var(--d, 0.6s);
-}
-@keyframes sub-fade {
-  from { opacity: 0; transform: translateY(1.5cqw); }
-  to { opacity: 0.95; transform: translateY(0); }
-}
+    .bl {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(5cqw);
+      animation: drift 7s ease-in-out infinite alternate
+    }
 
-/* LIGHT THEME SCENES (FOR SCENE VARIETY WITH CRISP DARK INK) */
-.sc[data-theme="light"] h2,
-.sc[data-theme="light"] .big,
-.sc[data-theme="light"] .h {
-  color: #0b1a3d;
-  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
-}
-.sc[data-theme="light"] .m {
-  color: #1e293b;
-}
-.sc[data-theme="light"] .sub {
-  color: #475569;
-  text-shadow: none;
-}
-.sc[data-theme="light"] .accent-blue {
-  color: #2563eb;
-}
-.sc[data-theme="light"] .y {
-  color: #d97706;
-  text-shadow: 0 0 20px rgba(217, 119, 6, 0.3);
-}
+    @keyframes drift {
+      to {
+        transform: translate(5cqw, 3cqw) scale(1.2)
+      }
+    }
 
-/* 3D DEVICE HARDWARE */
-.p3 {
-  position: absolute;
-  width: var(--w, 20cqw);
-  aspect-ratio: 1125/2436;
-  transform-style: preserve-3d;
-  will-change: transform, opacity;
-  opacity: 0;
-  filter: drop-shadow(0 25px 45px rgba(15, 23, 42, 0.22));
-}
-.on .p3 {
-  opacity: 1;
-  animation: phone-float var(--t, 6s) ease-in-out infinite alternate,
-             phone-enter 1.1s var(--ease-spring) both;
-  animation-delay: 0s, var(--d, 0s);
-}
-.on .p3.st {
-  animation: phone-enter-static 1.2s var(--ease-apple) both;
-  animation-delay: var(--d, 0s);
-}
+    .sq {
+      position: absolute;
+      background: rgba(255, 255, 255, .14);
+      animation: fl2 linear infinite
+    }
 
-@keyframes phone-float {
-  from { transform: rotateY(var(--a, -28deg)) rotateX(8deg) rotateZ(var(--z, 0deg)) translateY(1.2cqw); }
-  to { transform: rotateY(var(--b, 20deg)) rotateX(-6deg) rotateZ(var(--z, 0deg)) translateY(-1.2cqw); }
-}
-@keyframes phone-enter {
-  from {
-    opacity: 0;
-    transform: translateY(25cqh) rotateY(var(--a, -40deg)) scale(0.85);
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes phone-enter-static {
-  from {
-    opacity: 0;
-    transform: rotateY(-65deg) rotateX(15deg) translateY(12cqw) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: rotateY(var(--s, -8deg)) rotateX(2deg) translateY(0) scale(1);
-  }
-}
+    @keyframes fl2 {
+      from {
+        transform: translateY(70cqw) rotate(0)
+      }
 
-/* 3D EXTRUDED HARDWARE CHASSIS */
-.p3 .l, .p3 .f {
-  position: absolute;
-  inset: 0;
-  border-radius: 2.8cqw;
-  background: #0f172a;
-}
-.p3 .f {
-  overflow: hidden;
-  border: 0.55cqw solid #0f172a;
-  background: #000;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 15px 35px rgba(37, 99, 235, 0.15);
-}
-.p3 img, .p3 video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+      to {
+        transform: translateY(-12cqw) rotate(360deg)
+      }
+    }
 
-/* DYNAMIC ISLAND NOTCH */
-.p3 .notch {
-  position: absolute;
-  top: 1cqw;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5cqw;
-  height: 1.4cqw;
-  background: #000;
-  border-radius: 1cqw;
-  z-index: 10;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-}
+    .wd {
+      position: absolute;
+      translate: -50% -50%;
+      font-weight: 800;
+      letter-spacing: -.035em;
+      line-height: 1.25;
+      padding: .05em .1em .24em;
+      white-space: nowrap;
+      text-align: center
+    }
 
-/* SPECULAR GLASS LIGHT SHEEN */
-.p3 .sheen {
-  position: absolute;
-  inset: -100%;
-  background: linear-gradient(
-    115deg,
-    transparent 38%,
-    rgba(255, 255, 255, 0.45) 50%,
-    transparent 62%
-  );
-  transform: translateY(-100%);
-  pointer-events: none;
-  z-index: 9;
-}
-.on .p3 .sheen {
-  animation: glass-sweep 3.2s 0.3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-@keyframes glass-sweep {
-  0% { transform: translateY(-100%) rotate(25deg); opacity: 0; }
-  15% { opacity: 0.7; }
-  50% { transform: translateY(100%) rotate(25deg); opacity: 0.7; }
-  51%, 100% { opacity: 0; }
-}
+    .wd.m {
+      overflow: hidden
+    }
 
-/* LAPTOP MOCKUP FOR TEACHER PORTAL */
-.lp {
-  aspect-ratio: 1.62;
-  border-radius: 1.2cqw;
-  filter: drop-shadow(0 25px 50px rgba(15, 23, 42, 0.2));
-}
-.lp .l, .lp .f {
-  border-radius: 1.2cqw;
-}
-.lp .f {
-  border: 0.55cqw solid #1e293b;
-  border-bottom-width: 1.2cqw;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 20px 45px rgba(37, 99, 235, 0.15);
-}
-.lp .notch {
-  width: 3.5cqw;
-  height: 0.7cqw;
-  top: 0;
-  border-bottom-left-radius: 0.6cqw;
-  border-bottom-right-radius: 0.6cqw;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
+    .wd i {
+      display: inline-block;
+      font-style: normal
+    }
 
-/* SIMULATED TOUCH POINTER */
-.touch-pointer {
-  position: absolute;
-  width: 2.4cqw;
-  height: 2.4cqw;
-  border-radius: 50%;
-  background: rgba(37, 99, 235, 0.7);
-  box-shadow: 0 0 20px rgba(37, 99, 235, 0.8), 0 0 0 2px #fff;
-  z-index: 12;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.6);
-}
-.on .touch-pointer {
-  animation: touch-tap 2s var(--d, 1.2s) var(--ease-spring) infinite;
-}
-@keyframes touch-tap {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(1.4); }
-  20% { opacity: 0.95; transform: translate(-50%, -50%) scale(0.9); }
-  35% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-  55% { opacity: 0; transform: translate(-50%, -50%) scale(1.8); }
-  100% { opacity: 0; }
-}
+    .c-ink {
+      color: #0d0f1f
+    }
 
-/* SIMULATED MACOS CURSOR FOR DASHBOARD */
-.mac-cursor {
-  position: absolute;
-  width: 2.6cqw;
-  height: 2.6cqw;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff' stroke='%23000000' stroke-width='1.5'%3E%3Cpath d='M3 3l7.5 18 2.5-6.5L20 12z'/%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
-  z-index: 15;
-  pointer-events: none;
-  opacity: 0;
-  will-change: transform, opacity;
-}
-.on .cursor-click-lesson {
-  animation: cursor-glide 3.5s 0.8s var(--ease-apple) infinite;
-}
-@keyframes cursor-glide {
-  0% { opacity: 0; transform: translate(10cqw, 20cqh) scale(1); }
-  15% { opacity: 1; transform: translate(25cqw, 35cqh) scale(1); }
-  45% { opacity: 1; transform: translate(45.5cqw, 29.5cqh) scale(1); }
-  55% { opacity: 1; transform: translate(45.5cqw, 29.5cqh) scale(0.85); }
-  70% { opacity: 1; transform: translate(45.5cqw, 29.5cqh) scale(1); }
-  90% { opacity: 0; transform: translate(48cqw, 32cqh) scale(1); }
-  100% { opacity: 0; }
-}
+    .c-w {
+      color: #fff;
+      text-shadow: 0 .4cqw 2cqw rgba(0, 0, 0, .25)
+    }
 
-/* HOLOGRAPHIC AI DETECTION DISPLAY (BESIDE PHONE) */
-.ai-holo-scanner {
-  position: absolute;
-  width: 17cqw;
-  height: 24cqw;
-  background: rgba(4, 18, 48, 0.82);
-  border: 1px solid rgba(56, 189, 248, 0.6);
-  border-radius: 1.5cqw;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(56, 189, 248, 0.2);
-  z-index: 6;
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1cqw;
-}
-.on .ai-holo-scanner {
-  animation: holo-enter 0.8s 0.4s var(--ease-spring) both,
-             holo-pulse 2.5s 1.2s ease-in-out infinite alternate;
-}
-@keyframes holo-enter {
-  from { opacity: 0; transform: scale(0.6) translateY(3cqw); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-@keyframes holo-pulse {
-  from { border-color: rgba(56, 189, 248, 0.6); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.25); }
-  to { border-color: rgba(16, 185, 129, 0.85); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.35); }
-}
-.ai-corner {
-  position: absolute;
-  width: 1cqw;
-  height: 1cqw;
-  border-color: #38bdf8;
-  border-style: solid;
-}
-.tl { top: -2px; left: -2px; border-width: 3px 0 0 3px; }
-.tr { top: -2px; right: -2px; border-width: 3px 3px 0 0; }
-.bl { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; }
-.br { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; }
+    .c-gold {
+      color: #fbbf24;
+      text-shadow: 0 .4cqw 2cqw rgba(120, 60, 0, .3)
+    }
 
-.laser-scan {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #38bdf8 30%, #10b981 50%, #38bdf8 70%, transparent);
-  box-shadow: 0 0 10px #38bdf8;
-}
-.on .laser-scan {
-  animation: scan-vertical 2.2s ease-in-out infinite;
-}
-@keyframes scan-vertical {
-  0% { top: 5%; opacity: 0; }
-  15% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { top: 95%; opacity: 0; }
-}
+    .c-blue {
+      color: #2f6be8
+    }
 
-.hand-skeleton {
-  width: 90%;
-  height: 80%;
-  stroke: #38bdf8;
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  fill: none;
-  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.7));
-}
-.joint {
-  fill: #fbbf24;
-  stroke: #fff;
-  stroke-width: 1.2;
-  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.8));
-}
+    .c-g,
+    .c-gb {
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text
+    }
 
-/* FLOATING CHIPS / BADGES */
-.chip {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  color: #0f172a;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-weight: 800;
-  font-size: 1.6cqw;
-  padding: 0.7cqw 1.6cqw;
-  border-radius: 5cqw;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.2);
-  white-space: nowrap;
-  opacity: 0;
-  z-index: 6;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7cqw;
-}
-.chip.g {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  color: #451a03;
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
-}
-.chip.emerald {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: #ffffff;
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
-}
-.chip.purple {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-  color: #ffffff;
-  border: 1px solid rgba(139, 92, 246, 0.35);
-  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.35);
-}
-.on .chip {
-  animation: chip-pop 0.6s var(--ease-spring) both,
-             chip-bob 2.8s 1.2s ease-in-out infinite;
-  animation-delay: var(--d, 0.8s), calc(var(--d, 0.8s) + 0.6s);
-}
-@keyframes chip-pop {
-  from { opacity: 0; transform: scale(0.4) translateY(1.5cqw) rotate(-8deg); filter: blur(6px); }
-  to { opacity: 1; transform: scale(1) translateY(0) rotate(0deg); filter: blur(0); }
-}
-@keyframes chip-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-0.6cqw); }
-}
+    .c-g {
+      background-image: linear-gradient(90deg, #b08af0, #f472b6)
+    }
 
-/* SENYA MASCOT */
-.sen {
-  position: absolute;
-  aspect-ratio: 1;
-  background-size: cover;
-  background-position: center;
-  -webkit-mask-image: radial-gradient(circle, #000 60%, transparent 72%);
-  mask-image: radial-gradient(circle, #000 60%, transparent 72%);
-  z-index: 6;
-  opacity: 0;
-  filter: drop-shadow(0 15px 30px rgba(15, 23, 42, 0.25));
-}
-.on .sen {
-  animation: senya-enter 0.7s var(--ease-spring) both,
-             senya-wiggle 3s 1s ease-in-out infinite;
-  animation-delay: var(--d, 0.4s), calc(var(--d, 0.4s) + 0.7s);
-}
-@keyframes senya-enter {
-  from { opacity: 0; transform: scale(0.3) translateY(3cqw) rotate(-15deg); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-@keyframes senya-wiggle {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-0.8cqw) rotate(-4deg); }
-  75% { transform: translateY(-0.4cqw) rotate(4deg); }
-}
+    .c-gb {
+      background-image: linear-gradient(90deg, #4f8cff, #a06af0)
+    }
 
-/* SPEECH BUBBLE */
-.bub {
-  position: absolute;
-  background: #ffffff;
-  color: var(--ink);
-  font-weight: 800;
-  font-size: 1.8cqw;
-  padding: 1cqw 1.8cqw;
-  border-radius: 2.2cqw;
-  max-width: 26cqw;
-  line-height: 1.3;
-  z-index: 7;
-  opacity: 0;
-  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.06);
-}
-.bub::after {
-  content: "";
-  position: absolute;
-  bottom: -0.8cqw;
-  left: 2.2cqw;
-  border-width: 0.8cqw 0.8cqw 0 0;
-  border-style: solid;
-  border-color: #fff transparent;
-}
-.on .bub {
-  animation: chip-pop 0.6s var(--ease-spring) both;
-  animation-delay: var(--d, 1.4s);
-}
+    @keyframes slam {
+      from {
+        opacity: 0;
+        transform: scale(2.6) rotate(-5deg);
+        filter: blur(1.2cqw)
+      }
+    }
 
+    @keyframes pop {
+      0% {
+        opacity: 0;
+        transform: scale(0)
+      }
 
-/* FLAT POLAROIDS */
-.flat {
-  position: absolute;
-  width: 15cqw;
-  aspect-ratio: 1;
-  border-radius: 1.6cqw;
-  background-size: cover;
-  background-position: center;
-  border: 0.55cqw solid #ffffff;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
-  opacity: 0;
-}
-.on .flat {
-  animation: flat-slam 0.65s var(--ease-spring) both;
-  animation-delay: var(--d, 0.3s);
-}
-@keyframes flat-slam {
-  from { opacity: 0; transform: scale(1.6) translateY(5cqw) rotate(-18deg); filter: grayscale(1) blur(6px); }
-  to { opacity: 1; filter: grayscale(0.2); }
-}
+      70% {
+        transform: scale(1.14)
+      }
+    }
 
-/* TICKER */
-.tick {
-  height: 6.8cqw;
-  overflow: hidden;
-}
-.tick div {
-  animation: ticker-slide 5.5s 0.8s steps(5) forwards;
-}
-@keyframes ticker-slide {
-  to { transform: translateY(-34cqw); }
-}
+    @keyframes drop {
+      0% {
+        opacity: 0;
+        transform: translateY(-45cqw)
+      }
 
-/* WIPE TRANSITION */
-#wipe {
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  pointer-events: none;
-  overflow: hidden;
-}
-#wipe i {
-  position: absolute;
-  top: -15%;
-  bottom: -15%;
-  width: 80%;
-  left: -100%;
-  transform: skewX(-14deg);
-}
-#wipe i:nth-child(1) { background: #fbbf24; }
-#wipe i:nth-child(2) { background: #2563eb; margin-left: 6%; }
-#wipe i:nth-child(3) { background: #38bdf8; margin-left: 12%; }
-#wipe i:nth-child(4) { background: #ffffff; margin-left: 18%; }
-#wipe.run i {
-  animation: wipe-sweep 0.9s cubic-bezier(0.7, 0, 0.25, 1) both;
-}
-#wipe.run i:nth-child(2) { animation-delay: 0.06s; }
-#wipe.run i:nth-child(3) { animation-delay: 0.12s; }
-#wipe.run i:nth-child(4) { animation-delay: 0.18s; }
-@keyframes wipe-sweep {
-  0% { left: -100%; }
-  100% { left: 150%; }
-}
+      60% {
+        opacity: 1;
+        transform: translateY(2cqw)
+      }
 
-/* CONFETTI */
-.cf {
-  position: absolute;
-  top: -5cqh;
-  z-index: 18;
-  animation: confetti-fall linear forwards;
-}
-@keyframes confetti-fall {
-  to { transform: translateY(120cqh) rotate(720deg); }
-}
+      80% {
+        transform: translateY(-1cqw)
+      }
+    }
 
-/* ========================================================
-   CLEAN CINEMATIC PLAYER WITH AUTOHIDE OVERLAYS
-   ======================================================== */
-#player-ui {
-  position: absolute;
-  inset: 0;
-  z-index: 30;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  pointer-events: none;
-  opacity: 1;
-  transition: opacity 0.4s var(--ease-apple);
-}
-#player-ui.autohide {
-  opacity: 0;
-}
-#player-ui * {
-  pointer-events: auto;
-}
+    @keyframes flip {
+      from {
+        opacity: 0;
+        transform: perspective(60cqw) rotateX(-90deg)
+      }
+    }
 
-/* IN FULLSCREEN: HIDE TOP OVERLAYS COMPLETELY FOR CLEAN VIEWING */
-:fullscreen .player-topbar,
-:-webkit-full-screen .player-topbar,
-.clean-view .player-topbar {
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
+    @keyframes zoom {
+      from {
+        opacity: 0;
+        transform: scale(.25);
+        filter: blur(1cqw)
+      }
+    }
 
-/* TOP STATUS BAR */
-.player-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.6cqw 2.4cqw;
-  background: linear-gradient(to bottom, rgba(3, 8, 26, 0.85) 0%, transparent 100%);
-  transition: opacity 0.3s ease;
-}
-.player-brand {
-  display: flex;
-  align-items: center;
-  gap: 1cqw;
-}
-.brand-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.6cqw;
-  padding: 0.4cqw 1cqw;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 5cqw;
-  font-weight: 800;
-  font-size: 1.1cqw;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-.pulse-dot {
-  width: 0.6cqw;
-  height: 0.6cqw;
-  background: #10b981;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
-  animation: pulse-dot 1.5s infinite;
-}
-@keyframes pulse-dot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.5; }
-}
+    @keyframes wipe {
+      from {
+        clip-path: inset(0 100% 0 0)
+      }
+    }
 
-/* BOTTOM CONTROLS DOCK */
-.player-bottom-dock {
-  background: linear-gradient(to top, rgba(3, 8, 26, 0.92) 0%, rgba(3, 8, 26, 0.6) 70%, transparent 100%);
-  padding: 1.6cqw 2.4cqw 1.6cqw;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1cqw;
-}
+    @keyframes rise {
+      from {
+        transform: translateY(115%)
+      }
+    }
 
-/* TIMELINE PROGRESS SCRUBBER */
-.scrubber-container {
-  position: relative;
-  width: 100%;
-  height: 1.8cqw;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.scrubber-track {
-  position: relative;
-  width: 100%;
-  height: 0.45cqw;
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 1cqw;
-  overflow: visible;
-  transition: height 0.2s;
-}
-.scrubber-container:hover .scrubber-track {
-  height: 0.65cqw;
-}
-.scrubber-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 0%;
-  background: linear-gradient(90deg, #2563eb 0%, #fbbf24 100%);
-  border-radius: 1cqw;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
-}
-.scrubber-head {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  width: 1.3cqw;
-  height: 1.3cqw;
-  background: #ffffff;
-  border: 2px solid #2563eb;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  transition: transform 0.15s var(--ease-spring);
-}
-.scrubber-container:hover .scrubber-head {
-  transform: translate(-50%, -50%) scale(1.3);
-}
+    @keyframes out {
+      to {
+        opacity: 0;
+        transform: scale(1.1) translateY(-1cqw);
+        filter: blur(.6cqw)
+      }
+    }
 
-.chapter-mark {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(255, 255, 255, 0.35);
-  z-index: 2;
-}
+    @keyframes dr {
+      to {
+        stroke-dashoffset: 0
+      }
+    }
 
-/* CONTROLS BUTTONS ROW */
-.controls-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.controls-left, .controls-right {
-  display: flex;
-  align-items: center;
-  gap: 1.1cqw;
-}
-.ctrl-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  border-radius: 50%;
-  width: 3.2cqw;
-  height: 3.2cqw;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-.ctrl-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
-  transform: scale(1.08);
-}
-.ctrl-btn:active {
-  transform: scale(0.95);
-}
-.ctrl-btn svg {
-  width: 1.5cqw;
-  height: 1.5cqw;
-  fill: currentColor;
-}
-.ctrl-btn-play {
-  width: 3.8cqw;
-  height: 3.8cqw;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  border: none;
-  color: #03081a;
-  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.5);
-}
-.ctrl-btn-play:hover {
-  background: linear-gradient(135deg, #fde68a 0%, #d97706 100%);
-  transform: scale(1.1);
-}
-.time-display {
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-size: 1.3cqw;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.04em;
-}
-.time-display span {
-  color: #ffffff;
-}
-.scene-title-badge {
-  font-family: 'Baloo 2', system-ui, sans-serif;
-  font-size: 1.3cqw;
-  font-weight: 700;
-  color: #fbbf24;
-  background: rgba(251, 191, 36, 0.15);
-  border: 1px solid rgba(251, 191, 36, 0.35);
-  padding: 0.3cqw 1cqw;
-  border-radius: 5cqw;
-}
+    .dv {
+      position: absolute;
+      translate: -50% -50%;
+      transform-style: preserve-3d;
+      z-index: 10
+    }
 
-/* PROMINENT DOWNLOAD VIDEO BUTTON */
-.btn-download-video {
-  display: flex;
-  align-items: center;
-  gap: 0.6cqw;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  color: #ffffff;
-  border: none;
-  padding: 0.6cqw 1.5cqw;
-  border-radius: 5cqw;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-weight: 800;
-  font-size: 1.2cqw;
-  cursor: pointer;
-  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.45);
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-}
-.btn-download-video:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 22px rgba(37, 99, 235, 0.6);
-  background: linear-gradient(135deg, #60a5fa 0%, #1d4ed8 100%);
-}
-.btn-download-video svg {
-  width: 1.4cqw;
-  height: 1.4cqw;
-  fill: currentColor;
-}
+    .dv .l,
+    .dv .f {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--r);
+      background: #10131f
+    }
 
-/* TOAST NOTIFICATION */
-#toast {
-  position: absolute;
-  top: 5cqh;
-  left: 50%;
-  transform: translateX(-50%) translateY(-100%);
-  background: #0f172a;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #fff;
-  padding: 0.8cqw 2cqw;
-  border-radius: 5cqw;
-  font-weight: 800;
-  font-size: 1.3cqw;
-  z-index: 50;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
-  opacity: 0;
-  transition: transform 0.4s var(--ease-spring), opacity 0.4s;
-}
-#toast.show {
-  transform: translateX(-50%) translateY(0);
-  opacity: 1;
-}
+    .dv .f {
+      overflow: hidden;
+      border: .45cqw solid #0b0c14;
+      background: #fff;
+      box-shadow: 0 0 5cqw rgba(110, 150, 255, .5)
+    }
 
-/* OVERLAY START SCREEN */
-#play-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 40;
-  display: grid;
-  place-items: center;
-  background: rgba(2, 6, 23, 0.88);
-  backdrop-filter: blur(20px);
-  cursor: pointer;
-  transition: opacity 0.45s var(--ease-apple), visibility 0.45s;
-}
-#play-overlay.hide {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-.overlay-card {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.6cqw;
-}
-.launch-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6cqw;
-  background: rgba(251, 191, 36, 0.15);
-  border: 1px solid rgba(251, 191, 36, 0.35);
-  color: #fbbf24;
-  padding: 0.5cqw 1.4cqw;
-  border-radius: 5cqw;
-  font-weight: 800;
-  font-size: 1.3cqw;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.overlay-hero-btn {
-  font-family: 'Baloo 2', system-ui, sans-serif;
-  font-weight: 800;
-  font-size: 2.6cqw;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  color: #03081a;
-  border: none;
-  border-radius: 6cqw;
-  padding: 1.2cqw 4cqw;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 1cqw;
-  box-shadow: 0 15px 40px rgba(251, 191, 36, 0.45);
-  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
-}
-.overlay-hero-btn:hover {
-  transform: scale(1.06);
-  box-shadow: 0 20px 50px rgba(251, 191, 36, 0.65);
-}
-.overlay-desc {
-  font-size: 1.5cqw;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 32cqw;
-  line-height: 1.4;
-}
+    .dv img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  .p3, .sq, #bg-layer, #aurora { animation: none !important; }
-}
-</style>
+    .dv.gr img {
+      filter: grayscale(1) brightness(.85)
+    }
+
+    .dv .f::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, rgba(255, 255, 255, .4), transparent 38%, transparent 65%, rgba(255, 255, 255, .1))
+    }
+
+    .cf {
+      position: absolute;
+      top: -3cqw;
+      z-index: 40;
+      animation: cfd linear forwards
+    }
+
+    @keyframes cfd {
+      to {
+        transform: translateY(62cqw) rotate(720deg)
+      }
+    }
+
+    /* ===== FLOATING UI CARDS (exact app/dashboard components) ===== */
+    .fl {
+      position: absolute;
+      z-index: 8;
+      transform-style: preserve-3d;
+      opacity: 0;
+      pointer-events: none
+    }
+
+    .on .fl {
+      animation: fl-in 1s var(--ease-spring) both, fl-bob 4.6s ease-in-out infinite alternate;
+      animation-delay: var(--d, 1s), calc(var(--d, 1s) + 1s)
+    }
+
+    @keyframes fl-in {
+      from {
+        opacity: 0;
+        transform: translateZ(calc(var(--z, 5cqw) - 9cqw)) translateY(4cqw) scale(.8)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateZ(var(--z, 5cqw))
+      }
+    }
+
+    @keyframes fl-bob {
+      from {
+        translate: 0 .6cqw
+      }
+
+      to {
+        translate: 0 -1cqw
+      }
+    }
+
+    .ui {
+      width: var(--w, 18cqw);
+      position: relative;
+      background: #fff;
+      border-radius: 1.3cqw;
+      padding: 1.1cqw 1.3cqw;
+      color: #0f2a6b;
+      font-family: 'Plus Jakarta Sans', 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1cqw;
+      line-height: 1.25;
+      box-shadow: 0 2.4cqw 4.8cqw rgba(5, 15, 60, .4), 0 0 0 .1cqw rgba(255, 255, 255, .8), inset 0 0 0 .1cqw rgba(120, 150, 230, .22);
+      transform: rotateY(var(--ry, -14deg)) rotateX(var(--rx, 5deg));
+      scale: var(--sc, 1);
+      transform-origin: 50% 0;
+      text-align: left
+    }
+
+    .ui::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(120deg, rgba(255, 255, 255, .55), transparent 42%);
+      pointer-events: none
+    }
+
+    .ui.gold {
+      background: linear-gradient(135deg, #fcd34d, #f59e0b);
+      color: #3b2300
+    }
+
+    .ui.blue {
+      background: linear-gradient(135deg, #2f6be8, #1d4ed8);
+      color: #fff
+    }
+
+    .ui.or {
+      background: linear-gradient(135deg, #fdc43f, #fb9a1d);
+      color: #fff
+    }
+
+    .ui.te {
+      background: linear-gradient(135deg, #34c3b4, #0e9a8a);
+      color: #fff
+    }
+
+    .u-row {
+      display: flex;
+      align-items: center;
+      gap: .7cqw
+    }
+
+    .u-sp {
+      justify-content: space-between
+    }
+
+    .u-lab {
+      font-size: .85cqw;
+      color: #64748b;
+      font-weight: 700
+    }
+
+    .ui.blue .u-lab,
+    .ui.or .u-lab,
+    .ui.te .u-lab {
+      color: rgba(255, 255, 255, .85)
+    }
+
+    .ui.gold .u-lab {
+      color: #78350f
+    }
+
+    .u-big {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 2.3cqw;
+      line-height: 1.05;
+      font-weight: 800
+    }
+
+    .u-bar {
+      height: .55cqw;
+      border-radius: 1cqw;
+      background: #e2e8f0;
+      overflow: hidden;
+      margin: .4cqw 0
+    }
+
+    .u-bar i {
+      display: block;
+      height: 100%;
+      width: var(--p);
+      border-radius: 1cqw;
+      background: var(--c, #2f6be8)
+    }
+
+    .on .u-bar i {
+      animation: barg 1.4s var(--ease-apple) both;
+      animation-delay: calc(var(--d, 1s) + .7s)
+    }
+
+    @keyframes barg {
+      from {
+        width: 0
+      }
+    }
+
+    .u-pill {
+      display: inline-block;
+      padding: .25cqw .8cqw;
+      border-radius: 2cqw;
+      font-size: .72cqw;
+      letter-spacing: .05em;
+      font-weight: 800
+    }
+
+    .u-ico {
+      width: 2.3cqw;
+      height: 2.3cqw;
+      flex: none;
+      border-radius: .8cqw;
+      background: #14307a;
+      display: grid;
+      place-items: center
+    }
+
+    .u-ico b {
+      width: .95cqw;
+      height: .95cqw;
+      border: .2cqw solid #fff;
+      border-radius: 50%
+    }
+
+    .u-ring {
+      width: 3.8cqw;
+      height: 3.8cqw;
+      flex: none;
+      border-radius: 50%;
+      border: .5cqw solid #2d6fd6;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: .9cqw
+    }
+
+    .u-av {
+      width: 2.6cqw;
+      height: 2.6cqw;
+      flex: none;
+      border-radius: 50%;
+      background: #14307a;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: .9cqw
+    }
+
+    .u-btn {
+      flex: 1;
+      text-align: center;
+      padding: .55cqw;
+      border-radius: 2cqw;
+      font-size: .9cqw
+    }
+
+    .u-seg {
+      display: flex;
+      gap: .3cqw;
+      margin: .5cqw 0 1cqw
+    }
+
+    .u-seg i {
+      flex: 1;
+      height: .4cqw;
+      border-radius: 1cqw;
+      background: #dbe3ef
+    }
+
+    .u-seg i:first-child {
+      background: #2f6be8
+    }
+
+    .fl {
+      z-index: 20
+    }
+
+    @keyframes fl-in {
+      from {
+        opacity: 0;
+        transform: translate(var(--fx, 0cqw), var(--fy, 3cqw)) scale(.3)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .cl {
+      position: absolute;
+      inset: 0;
+      z-index: 25;
+      pointer-events: none
+    }
+
+    .ui {
+      translate: -50% -50%;
+      transform-origin: 50% 50%;
+      transform: perspective(70cqw) rotateY(var(--ry, -14deg)) rotateX(var(--rx, 5deg))
+    }
+
+    #ui {
+      position: absolute;
+      inset: 0;
+      z-index: 99;
+      display: grid;
+      place-items: center;
+      background: rgba(5, 6, 24, .94);
+      cursor: pointer;
+      transition: opacity .4s;
+      text-align: center
+    }
+
+    #ui.hide {
+      opacity: 0;
+      pointer-events: none
+    }
+
+    #ui h1 {
+      font: 800 6cqw 'Baloo 2';
+      color: #fbbf24
+    }
+
+    #ui p {
+      font-size: 1.6cqw;
+      color: #a9b8ff;
+      margin: .6cqw 0 2cqw
+    }
+
+    #ui button {
+      font: 800 2.4cqw 'Baloo 2';
+      background: #fbbf24;
+      color: #0d1f5c;
+      border: 0;
+      border-radius: 6cqw;
+      padding: 1.1cqw 4cqw;
+      cursor: pointer
+    }
+
+    /* ===== CONTROLS BAR ===== */
+    #stage.is-paused,
+    #stage.is-paused * {
+      animation-play-state: paused !important;
+    }
+
+    #controls {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3.6cqw;
+      z-index: 98;
+      display: flex;
+      align-items: center;
+      gap: .6cqw;
+      padding: 0 1.2cqw;
+      background: linear-gradient(to top, rgba(5,6,24,.85) 60%, transparent);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      transition: opacity .3s
+    }
+    #controls:hover,
+    #stage:not(.playing) #controls,
+    #stage.is-paused #controls { opacity: 1 }
+    #stage.playing:hover #controls { opacity: 1 }
+
+    .ctrl-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      padding: .3cqw;
+      border-radius: .6cqw;
+      transition: background .2s;
+      flex-shrink: 0
+    }
+    .ctrl-btn:hover { background: rgba(255,255,255,.15) }
+    .ctrl-btn svg { width: 1.5cqw; height: 1.5cqw; fill: currentColor }
+
+    #prog-wrap {
+      flex: 1;
+      height: 1.8cqw;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative
+    }
+    #prog-track {
+      width: 100%;
+      height: .35cqw;
+      background: rgba(255,255,255,.25);
+      border-radius: 1cqw;
+      position: relative;
+      overflow: hidden;
+      transition: height .15s
+    }
+    #prog-wrap:hover #prog-track { height: .55cqw }
+    #prog-fill {
+      height: 100%;
+      width: 0;
+      background: #fbbf24;
+      border-radius: 1cqw;
+      pointer-events: none
+    }
+
+    #mute {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      padding: .3cqw;
+      border-radius: .6cqw;
+      transition: background .2s;
+      flex-shrink: 0
+    }
+    #mute:hover { background: rgba(255,255,255,.15) }
+    #mute svg { width: 1.5cqw; height: 1.5cqw; fill: currentColor }
+
+    #fs-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      padding: .3cqw;
+      border-radius: .6cqw;
+      transition: background .2s;
+      flex-shrink: 0
+    }
+    #fs-btn:hover { background: rgba(255,255,255,.15) }
+    #fs-btn svg { width: 1.5cqw; height: 1.5cqw; fill: currentColor }
+  </style>
 </head>
+
 <body>
-
-<div id="stage-container">
   <div id="stage">
-    <!-- BACKGROUND ATMOSPHERE WITH DUAL-CANVAS SMOOTH CROSSFADE -->
-    <div id="bg-crossfade">
-      <div id="bg-layer-a" class="bg-canvas active"></div>
-      <div id="bg-layer-b" class="bg-canvas"></div>
-    </div>
-    <div id="aurora"></div>
-    <div id="grid-mesh"></div>
-    <div id="particles"></div>
-
-    <!-- ==================== SCENE 0: THE HOOK (WHITE STUDIO START) ==================== -->
-    <div class="sc" data-d="5" data-theme="light" data-name="The Hook">
-      <div class="cam" style="--cam-x: 2cqw; --cam-y: -1cqw">
-        <div class="flat" data-s="q1" style="left:6cqw;top:14cqh;width:15cqw;--d:.2s;transform:rotate(-8deg)"></div>
-        <div class="flat" data-s="q2" style="left:21cqw;top:44cqh;width:15cqw;--d:.55s;transform:rotate(5deg)"></div>
-        <div class="t R k" style="width:45cqw;right:5cqw">
-          <h2 class="h" data-k="Tired of learning Filipino Sign Language with just flat pictures?" style="font-size:4.6cqw"></h2>
-          <p class="sub" style="--d:1.2s">Static textbooks don't capture the movement and rhythm of real signing.</p>
-        </div>
+    <div id="scenes"></div>
+    <!-- CONTROLS BAR -->
+    <div id="controls">
+      <!-- Restart -->
+      <button class="ctrl-btn" id="restart-btn" title="Restart (0)">
+        <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+      </button>
+      <!-- Play/Pause -->
+      <button class="ctrl-btn" id="playpause-btn" title="Play / Pause (Space)">
+        <svg id="pp-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <!-- Progress bar -->
+      <div id="prog-wrap" title="Seek">
+        <div id="prog-track"><div id="prog-fill"></div></div>
       </div>
+      <!-- Mute -->
+      <button id="mute" title="Toggle Music">
+        <svg id="mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+      </button>
+      <!-- Fullscreen -->
+      <button id="fs-btn" title="Fullscreen">
+        <svg id="fs-icon" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+      </button>
     </div>
-
-    <!-- ==================== SCENE 1: CORE TRUTH ==================== -->
-    <div class="sc" data-d="6" data-rot="1" data-name="FSL Motion">
-      <div class="cam" style="--cam-x: -2cqw">
-        <div class="t L k" style="width:48cqw">
-          <h2 class="h" data-k="Filipino Sign Language isn't just another language."></h2>
-          <h2 class="m y" data-k="It moves. It takes your arms, hands, and whole body." style="margin-top:1.6cqw;--d:1s"></h2>
-        </div>
-        <div class="p3" data-i="det" style="right:12cqw;top:6cqh;--w:22cqw;--a:-32deg;--b:14deg;--d:.2s">
-          <div class="notch"></div>
-          <div class="sheen"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 2: SEÑAS BRAND REVEAL ==================== -->
-    <div class="sc" data-d="5.5" data-c="1" data-name="SEÑAS Reveal">
-      <div class="cam center-t" style="height:100%">
-        <div class="sen" data-senya style="left:50%;margin-left:-9cqw;top:8cqh;width:18cqw;--d:.3s"></div>
-        <div class="center-t" style="top:36cqh">
-          <h2 class="big y" style="font-size:11cqw;letter-spacing:0.8cqw;text-shadow:0 0 50px var(--gold-glow)" data-k="SEÑAS"></h2>
-        </div>
-        <div class="center-t k" style="top:62cqh">
-          <h2 class="m" data-k="The interactive app that detects your gestures live." style="font-size:3.6cqw;--d:0.8s"></h2>
-        </div>
-        <div class="center-t sub" style="top:76cqh;--d:1.6s">
-          Filipino Sign Language, learned the way it is authentically signed.
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 3: REAL-TIME AI GESTURE DETECTION ==================== -->
-    <div class="sc" data-d="6.5" data-name="Live AI Detection">
-      <div class="cam">
-        <div class="p3" data-i="det" style="left:7cqw;top:6cqh;--w:23cqw;--a:-12deg;--b:24deg;--d:.1s">
-          <div class="notch"></div>
-          <div class="sheen"></div>
-        </div>
-
-        <!-- HOLOGRAPHIC HAND SKELETON OUTSIDE PHONE -->
-        <div class="ai-holo-scanner" style="left:32cqw;top:28cqh">
-          <span class="ai-corner tl"></span>
-          <span class="ai-corner tr"></span>
-          <span class="ai-corner bl"></span>
-          <span class="ai-corner br"></span>
-          <div class="laser-scan"></div>
-          
-          <svg class="hand-skeleton" viewBox="0 0 200 200">
-            <path d="M100 170 L70 120 L50 80 L35 55" />
-            <path d="M100 170 L90 100 L85 50 L80 25" />
-            <path d="M100 170 L115 100 L120 52 L125 30" />
-            <path d="M100 170 L135 110 L145 65 L155 45" />
-            <path d="M100 170 L150 140 L170 120" />
-            <circle cx="100" cy="170" r="5" class="joint" />
-            <circle cx="70" cy="120" r="4" class="joint" />
-            <circle cx="50" cy="80" r="4" class="joint" />
-            <circle cx="35" cy="55" r="4" class="joint" />
-            <circle cx="90" cy="100" r="4" class="joint" />
-            <circle cx="85" cy="50" r="4" class="joint" />
-            <circle cx="80" cy="25" r="4" class="joint" />
-            <circle cx="115" cy="100" r="4" class="joint" />
-            <circle cx="120" cy="52" r="4" class="joint" />
-            <circle cx="125" cy="30" r="4" class="joint" />
-            <circle cx="135" cy="110" r="4" class="joint" />
-            <circle cx="145" cy="65" r="4" class="joint" />
-            <circle cx="155" cy="45" r="4" class="joint" />
-          </svg>
-          <span style="font-size:1cqw;font-weight:800;color:#0284c7;letter-spacing:0.05em;margin-top:0.4cqw">FSL MESH AI</span>
-        </div>
-
-        <!-- BADGES ABOVE AND UNDER PHONE -->
-        <div class="chip" style="position:absolute;left:7cqw;top:2cqh;--d:0.8s">
-          <span style="display:inline-block;width:0.8cqw;height:0.8cqw;background:#0284c7;border-radius:50%"></span>
-          AI Vision Active
-        </div>
-        <div class="chip emerald" style="position:absolute;left:7cqw;top:84cqh;--d:1.5s">
-          <span>✓</span> 98% Gesture Match!
-        </div>
-
-        <div class="t R k" style="width:44cqw;right:5cqw">
-          <h2 class="h" data-k="Sign and receive instant visual feedback!"></h2>
-          <h2 class="m y" data-k="Real-time camera gesture recognition." style="margin-top:1.4cqw;--d:.8s"></h2>
-          <p class="sub" style="--d:1.5s">Senya analyzes hand landmarks, angles, and movement speed to guide every sign.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 4: COMPREHENSIVE CURRICULUM (ENRICHED COMPOSITION) ==================== -->
-    <div class="sc" data-d="6" data-theme="light" data-name="Curriculum Modules">
-      <div class="cam">
-        <div class="p3" data-i="home" style="left:4cqw;top:12cqh;--w:15cqw;--a:-34deg;--b:-6deg;--d:.2s">
-          <div class="notch"></div><div class="sheen"></div>
-        </div>
-        <div class="p3" data-i="gest" style="left:21cqw;top:3cqh;--w:18cqw;--a:-22deg;--b:12deg;--d:.4s">
-          <div class="notch"></div><div class="sheen"></div>
-          <div class="touch-pointer" style="left:65%;top:45%"></div>
-        </div>
-        <div class="p3" data-i="quiz" style="left:40cqw;top:12cqh;--w:15cqw;--a:-4deg;--b:30deg;--d:.6s">
-          <div class="notch"></div><div class="sheen"></div>
-        </div>
-
-
-        <!-- RIGHT SIDE COMPOSITION: BEAUTIFULLY FILLS VERTICAL SPACE -->
-        <div class="t R" style="top:50%;transform:translateY(-50%);width:38cqw;right:5cqw">
-          <div class="chip" style="position:static;display:inline-flex;margin-bottom:1.5cqw;--d:.2s;font-size:1.4cqw">
-            <span>📚</span> 31 Interactive Lessons
-          </div>
-          <h2 class="h" data-k="From first signs to fluent conversation." style="font-size:3.8cqw;line-height:1.1"></h2>
-          <div class="tick big m y" style="margin-top:1.2cqw">
-            <div style="line-height:6.8cqw">
-              <div>Alphabets</div>
-              <div>Numbers</div>
-              <div>Greetings</div>
-              <div>Survival</div>
-              <div>Conversation</div>
-              <div>Conversation</div>
-            </div>
-          </div>
-          <h2 class="m" style="margin-top:0.4cqw">one sign at a time.</h2>
-          <p class="sub" style="--d:1.4s">Structured levels designed for Filipino Deaf learners.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 5: LEADERBOARD & RESULTS ==================== -->
-    <div class="sc" data-d="6" data-name="Class Leaderboard">
-      <div class="cam">
-        <div class="p3" data-i="res" style="left:8cqw;top:5cqh;--w:20cqw;--a:-26deg;--b:10deg;--d:.2s">
-          <div class="notch"></div><div class="sheen"></div>
-        </div>
-        <div class="p3" data-i="lead" style="left:30cqw;top:9cqh;--w:20cqw;--a:-10deg;--b:28deg;--d:.5s">
-          <div class="notch"></div><div class="sheen"></div>
-        </div>
-
-
-        <!-- BADGE MOVED DIRECTLY UNDER TEXT COMPACTLY -->
-        <div class="t R k" style="width:42cqw;right:5cqw">
-          <h2 class="h" data-k="Celebrate your progress."></h2>
-          <h2 class="m y" data-k="Compete and climb with your classmates." style="margin-top:1.4cqw;--d:.8s"></h2>
-          <p class="sub" style="--d:1.5s">Daily streaks, speed challenges, and rankings make learning fun.</p>
-          <div class="chip g" style="position:static;margin-top:2cqw;--d:1.8s;display:inline-flex">
-            <span>🏆</span> Be #1 in your class!
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 6: CERTIFICATES & REWARDS ==================== -->
-    <div class="sc" data-d="5.5" data-c="1" data-name="Achievements">
-      <div class="cam">
-        <div class="t L k" style="width:42cqw;left:6cqw">
-          <h2 class="h" data-k="Earn certificates."></h2>
-          <h2 class="h y" data-k="Unlock mastery badges." style="margin-top:1.2cqw;--d:.8s"></h2>
-        </div>
-        <div class="p3" data-i="cert" style="right:31cqw;top:5cqh;--w:20cqw;--a:-26deg;--b:10deg;--d:.2s">
-          <div class="notch"></div><div class="sheen"></div>
-        </div>
-        <div class="p3" data-i="ach" style="right:7cqw;top:9cqh;--w:20cqw;--a:-8deg;--b:30deg;--d:.5s">
-          <div class="notch"></div><div class="sheen"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 7: CHALLENGE MODES ==================== -->
-    <div class="sc" data-d="5.5" data-name="Practice Modes">
-      <div class="cam">
-        <div class="p3" data-i="chal" style="left:12cqw;top:5cqh;--w:22cqw;--a:-30deg;--b:16deg;--d:.2s">
-          <div class="notch"></div><div class="sheen"></div>
-        </div>
-        <div class="t R k" style="width:46cqw;right:5cqw">
-          <h2 class="h" data-k="Pick your mode."></h2>
-          <div style="display:flex;gap:1.8cqw;margin-top:2.5cqw">
-            <div class="chip g" style="position:static;--d:0.8s;font-size:2.2cqw">⚡ Master Mode</div>
-            <div class="chip purple" style="position:static;--d:1.3s;font-size:2.2cqw">∞ Infinite Mode</div>
-          </div>
-          <p class="sub" style="--d:1.8s">Target your weakest signs with AI precision, or practice freely with zero pressure.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 8: TEACHER REVEAL (CLEANED UP COPY!) ==================== -->
-    <div class="sc" data-d="5.5" data-rot="1" data-name="Teacher Portal Reveal">
-      <div class="cam center-t" style="height:100%">
-        <!-- REPLACED 'Teachers, your turn' WITH USER'S EXACT PHRASE -->
-        <div class="center-t k" style="top:9cqh">
-          <h2 class="big y" style="font-size:5.2cqw" data-k="And teachers? We've got you covered!"></h2>
-          <p class="sub" style="--d:0.8s;font-size:2cqw;margin-top:0.8cqw">Seamlessly manage curriculum, track learner mastery, and guide your classroom.</p>
-        </div>
-        
-        <div class="p3" data-i="home" style="left:9cqw;top:35cqh;--w:12cqw;--a:-20deg;--b:10deg;--d:.2s">
-          <div class="notch"></div>
-        </div>
-        
-        <svg viewBox="0 0 1600 900" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:4;pointer-events:none">
-          <path d="M300 640 C 500 880, 740 250, 960 580" fill="none" stroke="#2563eb" stroke-width="14" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="filter:drop-shadow(0 0 15px rgba(37,99,235,0.4))" class="ln" />
-        </svg>
-        
-        <div class="p3 lp" data-i="dash" style="right:6cqw;top:33cqh;--w:50cqw;--a:18deg;--b:-14deg;--d:1.4s">
-          <div class="notch"></div><div class="sheen"></div>
-        </div>
-
-
-        <div class="sen" data-senya style="left:5cqw;bottom:3cqh;width:15cqw;--d:1.8s"></div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 9: AI-ASSISTED LESSON CREATION ==================== -->
-    <div class="sc" data-d="7.5" data-theme="light" data-name="Lesson Creation">
-      <div class="cam">
-        <div class="p3 lp" data-i="lessons" style="right:4cqw;top:15cqh;--w:56cqw;--a:-8deg;--b:8deg;--d:.1s">
-          <div class="notch"></div>
-          <div class="sheen"></div>
-          <div class="mac-cursor cursor-click-lesson"></div>
-        </div>
-
-
-        <!-- BADGE POSITIONED COMPACTLY UNDER TEXT ON LEFT -->
-        <div class="t L k" style="width:38cqw;left:6cqw;top:50%;transform:translateY(-50%)">
-          <h2 class="h" data-k="AI-assisted lesson creation."></h2>
-          <h2 class="m y" data-k="Build and publish in minutes." style="margin-top:1.2cqw;--d:0.8s"></h2>
-          <p class="sub" style="--d:1.6s;font-size:1.9cqw">
-            Upload custom video signs, organize modules, and schedule exams with ease.
-          </p>
-          <div class="chip emerald" style="position:static;margin-top:2cqw;--d:2s;display:inline-flex">
-            <span>✨</span> Created interactive lessons
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 10: STUDENT PROGRESS ==================== -->
-    <div class="sc" data-d="7.5" data-name="Student Progress">
-      <div class="cam">
-        <div class="p3 lp" data-i="students" style="right:4cqw;top:15cqh;--w:56cqw;--a:16deg;--b:-6deg;--t:8s;--d:.1s">
-          <div class="notch"></div>
-          <div class="sheen"></div>
-        </div>
-
-
-        <!-- BADGE POSITIONED COMPACTLY UNDER TEXT ON LEFT -->
-        <div class="t L k" style="width:38cqw;left:6cqw;top:50%;transform:translateY(-50%)">
-          <h2 class="h" data-k="See student progress."></h2>
-          <h2 class="m y" data-k="Help every learner succeed." style="margin-top:1.2cqw;--d:0.8s"></h2>
-          <p class="sub" style="--d:1.6s;font-size:1.9cqw">
-            Know who is doing great and who needs a helping hand.
-          </p>
-          <div class="chip g" style="position:static;margin-top:2cqw;--d:2s;display:inline-flex">
-            <span>👥</span> Add many students at once!
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SCENE 11: GRAND FINALE / CALL TO ACTION ==================== -->
-    <div class="sc" data-d="9" data-c="1" data-name="Grand Finale">
-      <div class="cam center-t" style="height:100%">
-        <div class="sen" data-senya style="left:50%;margin-left:-9cqw;top:4cqh;width:18cqw;--d:.2s"></div>
-        
-        <div class="center-t" style="top:32cqh">
-          <h2 class="big y" style="font-size:11cqw;letter-spacing:0.8cqw;text-shadow:0 0 60px var(--gold-glow)" data-k="SEÑAS"></h2>
-        </div>
-        
-        <div class="center-t k" style="top:56cqh">
-          <h2 class="m" data-k="Learn Filipino Sign Language, one sign at a time." style="font-size:3.2cqw;--d:0.8s"></h2>
-        </div>
-
-        <div class="center-t sub" style="top:70cqh;display:flex;justify-content:center;gap:6cqw;--d:1.8s">
-          <div>
-            <b class="y" style="font-size:2.2cqw">For Learners</b><br>
-            <span style="color:rgba(255,255,255,0.85)">Learn · Practice · Master</span>
-          </div>
-          <div style="width:1px;background:rgba(255,255,255,0.2);height:6cqh"></div>
-          <div>
-            <b class="y" style="font-size:2.2cqw">For Educators</b><br>
-            <span style="color:rgba(255,255,255,0.85)">Publish · Track · Empower</span>
-          </div>
-        </div>
-
-        <div class="center-t sub" style="position:absolute;bottom:4.5cqh;width:100%;--d:3s;color:rgba(255,255,255,0.7);font-size:1.8cqw">
-          One inclusive platform. A whole classroom moving forward together.
-        </div>
-      </div>
-    </div>
-
-    <!-- TRANSITION WIPER -->
-    <div id="wipe"><i></i><i></i><i></i><i></i></div>
-
-    <!-- FLOATING TOAST -->
-    <div id="toast">🎬 Preparing Video Download...</div>
-
-    <!-- ==================== CLEAN CINEMATIC PLAYER & EXPORT UI ==================== -->
-    <div id="player-ui">
-      <!-- TOP STATUS BAR (HIDES AUTOMATICALLY IN FULLSCREEN) -->
-      <div class="player-topbar">
-        <div class="player-brand">
-          <span style="font-family:'Baloo 2';font-weight:800;font-size:1.8cqw;color:var(--gold);letter-spacing:0.05em">SEÑAS</span>
-          <div class="brand-pill">
-            <span class="pulse-dot"></span>
-            Commercial Promo
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:1cqw">
-          <button class="ctrl-btn" id="btn-clean-mode" title="Toggle Clean View (Hides UI)" style="border-radius:5cqw;width:auto;padding:0.4cqw 1cqw;font-size:1.1cqw;font-weight:800">
-            👁️ Clean View
-          </button>
-          <div class="scene-title-badge" id="scene-badge">1 / 12 · The Hook</div>
-        </div>
-      </div>
-
-      <!-- BOTTOM CONTROL DOCK -->
-      <div class="player-bottom-dock">
-        <!-- INTERACTIVE PROGRESS SCRUBBER -->
-        <div class="scrubber-container" id="scrubber-bar">
-          <div class="scrubber-track">
-            <div class="scrubber-fill" id="scrubber-fill"></div>
-            <div class="scrubber-head" id="scrubber-head"></div>
-          </div>
-        </div>
-
-        <!-- CONTROLS ROW -->
-        <div class="controls-row">
-          <div class="controls-left">
-            <!-- PLAY / PAUSE -->
-            <button class="ctrl-btn ctrl-btn-play" id="btn-play" title="Play / Pause (Space)">
-              <svg id="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <svg id="icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-            </button>
-            <!-- PREV SCENE -->
-            <button class="ctrl-btn" id="btn-prev" title="Previous scene (Left Arrow)">
-              <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
-            </button>
-            <!-- NEXT SCENE -->
-            <button class="ctrl-btn" id="btn-next" title="Next scene (Right Arrow)">
-              <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-            </button>
-
-            <!-- TIMESTAMP -->
-            <div class="time-display">
-              <span id="time-cur">0:00</span> / <span id="time-tot">1:12</span>
-            </div>
-          </div>
-
-          <div class="controls-right">
-            <!-- DOWNLOAD VIDEO BUTTON -->
-            <button class="btn-download-video" id="btn-download" title="Export / Download Video Presentation">
-              <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
-              Download Video
-            </button>
-            <!-- AUDIO TOGGLE -->
-            <button class="ctrl-btn" id="btn-mute" title="Sound toggle (M)">
-              <svg id="icon-vol-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-              <svg id="icon-vol-off" viewBox="0 0 24 24" style="display:none"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-            </button>
-            <!-- FULLSCREEN (CLEAN VIEW) -->
-            <button class="ctrl-btn" id="btn-fullscreen" title="Fullscreen Clean View (F)">
-              <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- START / REPLAY HERO OVERLAY -->
-    <div id="play-overlay">
-      <div class="overlay-card">
-        <div class="launch-badge">✦ Official Commercial Presentation</div>
-        <h1 style="font-family:'Baloo 2';font-size:4.8cqw;font-weight:800;letter-spacing:-0.01em;color:#ffffff">
-          Experience <span style="color:var(--gold)">SEÑAS</span>
-        </h1>
-        <p class="overlay-desc">
-          Cinematic Commercial · Spatial 3D Previews · AI Vision Detection · Teacher Curriculum Suite
-        </p>
-        <button class="overlay-hero-btn" id="btn-hero-play">
-          <svg viewBox="0 0 24 24" style="width:2cqw;height:2cqw;fill:currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Watch Commercial
-        </button>
-        <span style="font-size:1.2cqw;color:rgba(255,255,255,0.7)">Best experienced with sound · ~1 minute</span>
+    <div id="ui">
+      <div>
+        <h1>SEÑAS</h1>
+        <p>Launch ad · about 1 minute · sound on</p><button id="go">Play the ad</button>
       </div>
     </div>
   </div>
-</div>
+  <script>
+    /* ===== MEDIA: replace paths with your images or .mp4 files ===== */
+    const A = { "dash": "assets/dash.jpg", "lessons": "assets/lessons.png", "students": "assets/students.png", "home": "assets/home.jpg", "gest": "assets/gest.jpg", "quiz": "assets/quiz.jpg", "det": "assets/det.jpg", "res": "assets/res.jpg", "lead": "assets/lead.jpg", "cert": "assets/cert.jpg", "ach": "assets/ach.jpg", "chal": "assets/chal.jpg", "ana": "assets/ana.jpg", "noti": "assets/noti.jpg", "senya": "assets/senya.jpg", "q1": "assets/q1.jpg", "q2": "assets/q2.jpg", "site": "assets/site.jpg", "dl": "assets/welcome.PNG" };
+    /* ===== FLOATING UI CARD TEMPLATES (edit text/numbers here) ===== */
+    const row = (a, b) => `<div class="u-row u-sp"><span>${a}</span><span class="u-lab">${b}</span></div>`;
+    const kpi = (t, v, s) => `<div class="u-row"><div class="u-ico"><b></b></div><span style="font-size:1.1cqw">${t}</span></div><div class="u-big" style="margin:.5cqw 0 .1cqw">${v}</div><div class="u-lab">${s}</div>`;
+    const stu = (i, n, l, c, g, x, p) => `<div class="u-row" style="margin:.5cqw 0"><div class="u-av">${i}</div><div style="flex:1"><div class="u-row"><span style="font-size:1.05cqw">${n}</span><span class="u-pill" style="background:${c};color:#1e3a8a">${l}</span></div><div class="u-row"><span class="u-lab">${g}</span><div class="u-bar" style="flex:1"><i style="--p:${p}"></i></div><span style="color:#f59e0b;font-size:.8cqw">${x}</span></div></div></div>`;
+    const les = (n, s, p) => `<div class="u-lab" style="color:#14307a;font-size:1.1cqw">${n}</div><div class="u-bar" style="margin:.8cqw 0"><i style="--p:${p};--c:#14307a"></i></div><div class="u-lab" style="color:#2f6be8">${s}</div>`;
+    const T = {
+      xp: () => `<div class="u-row" style="gap:1cqw"><div class="u-ring">100%</div><div style="flex:1"><div class="u-row u-sp"><span style="font-size:1.2cqw">Total XP</span><span class="u-pill" style="background:#2563eb;color:#fff">LEVEL 10</span></div><div class="u-big" style="color:#2563eb">8108 <small style="font-size:1cqw">XP</small></div><div class="u-bar"><i style="--p:100%;--c:#fbbf24"></i></div><div class="u-lab">Advanced · Max level reached</div></div></div><div style="border-top:.1cqw solid #e2e8f0;margin:.8cqw 0"></div>${row("Today's Goal", "30 / 100 XP")}<div class="u-bar"><i style="--p:30%;--c:#fbbf24"></i></div>`,
+      lesson: () => `<div class="u-row" style="margin-bottom:.5cqw"><span class="u-pill" style="background:#dbeafe;color:#1d4ed8">BEGINNER</span><span class="u-pill" style="background:#dcfce7;color:#15803d">QUIZ</span><span class="u-pill" style="background:#dcfce7;color:#15803d;margin-left:auto">86%</span></div><div style="font-size:1.5cqw;font-family:'Baloo 2'">Say Nice to Meet you</div><div class="u-bar"><i style="--p:100%;--c:#31c27c"></i></div>${row("100% completed", "2 steps")}<div class="u-row" style="margin-top:.7cqw"><div class="u-btn" style="background:#31c27c;color:#fff">Review</div><div class="u-btn" style="background:#e6f0ff;color:#1d4ed8">Attempts</div></div>`,
+      quizq: () => `<div style="font-size:1.05cqw">Question 1 of 5</div><div class="u-seg"><i></i><i></i><i></i><i></i><i></i></div><div style="text-align:center;font-size:1.3cqw;font-family:'Baloo 2'"><span style="color:#dc2626">?</span><br>Which sign means 'Thank You'?</div>`,
+      result: () => `<div style="text-align:center"><div class="u-ring" style="width:6.4cqw;height:6.4cqw;margin:0 auto;font-size:.8cqw"><div><div class="u-big" style="color:#2563eb;font-size:2cqw">80%</div>SCORE</div></div><div style="color:#fbbf24;font-size:2cqw;margin:.3cqw 0">★★<span style="color:#e5e7eb">★</span></div><div class="u-big" style="color:#10b981;font-size:1.8cqw">Excellent!</div><div class="u-lab">4 out of 5 correct answers</div><span class="u-pill" style="background:#fef3c7;color:#b45309;margin-top:.6cqw">Rank #1 on Leaderboard</span></div>`,
+      rank: () => `<div class="u-row"><span class="u-big" style="color:#fbbf24;font-size:3cqw">#1</span><span style="font-size:1.05cqw;border-left:.1cqw solid rgba(255,255,255,.4);padding-left:.8cqw">You're at the top of your class!</span></div>`,
+      ach: () => `<div style="text-align:center"><div style="width:5.5cqw;height:5.5cqw;margin:0 auto .5cqw;border-radius:50%;background:radial-gradient(circle,#fff7e0 55%,#fbbf24);display:grid;place-items:center;font-size:2.6cqw;color:#d97706">★</div><div class="u-big" style="font-size:1.8cqw">Week Warrior</div><div class="u-lab">Practiced 7 days in a row!</div><span class="u-pill" style="background:#fef3c7;color:#92400e;margin-top:.5cqw">Achievement Unlocked!</span></div>`,
+      cert: () => `<div style="text-align:center"><div style="font-size:.8cqw;letter-spacing:.12em">CERTIFICATE OF ACHIEVEMENT</div><div class="u-lab" style="margin-top:.4cqw">Presented to</div><div class="u-big" style="font-size:1.8cqw;border-bottom:.15cqw solid #0f2a6b;padding-bottom:.3cqw">Juan Dela Cruz</div><div class="u-lab" style="margin:.5cqw 0">for completing the SEÑAS Filipino Sign Language Learning Platform</div><span class="u-pill" style="background:#e6f0ff;color:#1d4ed8;border:.1cqw solid #bcd4ff">★ ADVANCED LEVEL ★</span></div>`,
+      master: () => `<span class="u-pill" style="background:rgba(255,255,255,.3)">Recommended</span><div class="u-big" style="font-size:1.7cqw;margin:.4cqw 0">Master Mode</div><div class="u-lab">Focus on signs you need to improve</div><div style="margin-top:.6cqw">Start →</div>`,
+      infinite: () => `<span class="u-pill" style="background:rgba(255,255,255,.3)">Practice</span><div class="u-big" style="font-size:1.7cqw;margin:.4cqw 0">Infinite Mode</div><div class="u-lab">Practice random signs, no pressure</div><div style="margin-top:.6cqw">Start →</div>`,
+      feed: () => `<div style="font-size:1.2cqw">Nice form! Hold the sign for a moment.</div>`,
+      detect: () => `<div class="u-row u-sp"><span class="u-lab">DETECTING <b style="color:#0f2a6b">NICE TO MEET YOU</b></span><b style="color:#10b981;font-size:1.2cqw">92%</b></div><div class="u-bar"><i style="--p:92%;--c:#10b981"></i></div>`,
+      k1: () => kpi('Enrolled Students', '25', 'Currently enrolled this school year'),
+      k2: () => kpi('Weekly Active Engagement', '100.0%', '25 of 25 enrolled students active in the last 7 days'),
+      k3: () => kpi('Lesson Completion Rate', '35.0%', '235 of 672 student lesson assignments completed'),
+      k4: () => kpi('Average Quiz Score', '87.3%', 'Based on 127 quiz results'),
+      ins: () => `<div class="u-row"><span style="letter-spacing:.1em;font-size:.95cqw">SENYA INSIGHTS</span></div><div class="u-lab" style="margin:.1cqw 0 .6cqw">Based on your class data</div><div style="font-size:.8cqw;letter-spacing:.06em">TOP PERFORMER</div><div style="font-size:1.1cqw;margin-top:.3cqw">Maria Test1 is among your top performers with an average quiz score of 100.0% across 3 quizzes.</div>`,
+      studs: () => `<div class="u-row u-sp"><span class="u-big" style="font-size:1.6cqw">My Students</span><span style="color:#2f6be8;font-size:.8cqw">VIEW ALL</span></div><div class="u-lab">25 enrolled</div>${stu('AS', 'Ana Salvador', 'INTERMEDIATE', '#dbeafe', 'Grade 5', '361 XP', '25%')}${stu('AP', 'Angela Pineda', 'INTERMEDIATE', '#dbeafe', 'Grade 5', '780 XP', '80%')}${stu('AB', 'Ava Buen', 'BEGINNER', '#e0f2fe', 'Grade 2', '370 XP', '30%')}`,
+      lA: () => les('ALPHABETS & NUMBERS', '12 lessons · 96% complete', '96%'),
+      lB: () => les('FINGERSPELLING AND GREETINGS', '4 lessons · 46% complete', '46%'),
+      letj: () => `<div class="u-row u-sp"><div class="u-row"><b style="font-size:1.5cqw;font-family:'Baloo 2'">Letter J</b><span class="u-pill" style="background:#ede9fe;color:#6d28d9">Moving Sign</span></div><b style="font-size:1cqw">9.8% Class Accuracy</b></div><div class="u-lab" style="margin:.4cqw 0">4108 total attempts (401 correct · 3662 mistakes)</div><div class="u-bar"><i style="--p:9.8%;--c:#7c3aed"></i></div><span class="u-pill" style="background:#fef3c7;color:#b45309;margin-top:.3cqw">49 Signs Need Practice</span>`
+    };
 
-<script>
-/* ========================================================
-   MEDIA CONFIGURATION
-   ======================================================== */
-const A = {
-  "dash": "assets/dash.jpg",
-  "lessons": "assets/lessons.png",
-  "students": "assets/students.png",
-  "home": "assets/home.jpg",
-  "gest": "assets/gest.jpg",
-  "quiz": "assets/quiz.jpg",
-  "det": "assets/det.jpg",
-  "res": "assets/res.jpg",
-  "lead": "assets/lead.jpg",
-  "cert": "assets/cert.jpg",
-  "ach": "assets/ach.jpg",
-  "chal": "assets/chal.jpg",
-  "ana": "assets/ana.jpg",
-  "noti": "assets/noti.jpg",
-  "senya": "assets/senya.jpg",
-  "q1": "assets/q1.jpg",
-  "q2": "assets/q2.jpg"
-};
-
-/* CINEMATIC BACKGROUND GRADIENTS PER SCENE (BLUE, WHITE, AND PURPLE ONLY — NO GREEN) */
-const BG_THEMES = [
-  "radial-gradient(circle at 50% 30%, #ffffff 0%, #f8fafc 55%, #e2e8f0 100%)", // 0: The Hook (White)
-  "radial-gradient(circle at 50% 25%, #1d4ed8 0%, #0c2d6b 50%, #030b1e 100%)", // 1: FSL Motion (Royal Blue)
-  "radial-gradient(circle at 50% 30%, #1e40af 0%, #0f2b70 45%, #030a1f 100%)", // 2: SEÑAS Reveal (Navy Gold)
-  "radial-gradient(circle at 35% 35%, #0369a1 0%, #082f49 50%, #02121e 100%)", // 3: AI Detection (Cyber Blue)
-  "radial-gradient(circle at 65% 30%, #ffffff 0%, #f0f7ff 50%, #dbeafe 100%)", // 4: Modules (Apple Studio White)
-  "radial-gradient(circle at 35% 30%, #1d4ed8 0%, #172554 50%, #030919 100%)", // 5: Leaderboard (Sapphire Blue)
-  "radial-gradient(circle at 50% 30%, #6b21a8 0%, #3b0764 50%, #030712 100%)", // 6: Certificates (Royal Purple)
-  "radial-gradient(circle at 40% 35%, #4c1d95 0%, #2e1065 50%, #020617 100%)", // 7: Practice Modes (Deep Royal Purple)
-  "radial-gradient(circle at 50% 20%, #1e40af 0%, #0f2b70 45%, #030a1f 100%)", // 8: Teacher Reveal (Navy Gold)
-  "radial-gradient(circle at 70% 35%, #ffffff 0%, #f0f9ff 45%, #e0f2fe 100%)", // 9: Teacher Lessons (Studio White)
-  "radial-gradient(circle at 30% 35%, #1e3a8a 0%, #0f2557 50%, #020b1e 100%)", // 10: Student Progress (Midnight Sapphire Blue - NO green!)
-  "radial-gradient(circle at 50% 35%, #2563eb 0%, #1e3a8a 50%, #040c24 100%)"  // 11: Grand Finale (Radiant Hero Navy Blue)
-];
-
-const S = [...document.querySelectorAll('.sc')];
-const stageContainer = document.getElementById('stage-container');
-const stage = document.getElementById('stage');
-const bgLayerA = document.getElementById('bg-layer-a');
-const bgLayerB = document.getElementById('bg-layer-b');
-const toast = document.getElementById('toast');
-let activeCanvas = 'a';
-
-function setSceneBackground(gradientStr, immediate = false) {
-  if (immediate) {
-    if (bgLayerA) {
-      bgLayerA.style.background = gradientStr;
-      bgLayerA.classList.add('active');
-    }
-    if (bgLayerB) {
-      bgLayerB.classList.remove('active');
-    }
-    activeCanvas = 'a';
-    return;
-  }
-  const nextLayer = activeCanvas === 'a' ? bgLayerB : bgLayerA;
-  const currentLayer = activeCanvas === 'a' ? bgLayerA : bgLayerB;
-
-  if (nextLayer) {
-    nextLayer.style.background = gradientStr;
-    nextLayer.classList.add('active');
-  }
-  if (currentLayer) {
-    currentLayer.classList.remove('active');
-  }
-  activeCanvas = activeCanvas === 'a' ? 'b' : 'a';
-}
-
-// Floating light particles
-const particlesContainer = document.getElementById('particles');
-for (let i = 0; i < 28; i++) {
-  const p = document.createElement('div');
-  p.className = 'sq';
-  const size = 0.8 + Math.random() * 2.4;
-  p.style.cssText = `
-    left: ${Math.random() * 100}%;
-    width: ${size}cqw;
-    height: ${size}cqw;
-    animation-duration: ${7 + Math.random() * 11}s;
-    animation-delay: -${Math.random() * 12}s;
-  `;
-  particlesContainer.appendChild(p);
-}
-
-const renderMedia = src => {
-  if (!src) return '';
-  return /\.(mp4|webm|mov)$/i.test(src)
-    ? `<video src="${src}" autoplay muted loop playsinline></video>`
-    : `<img src="${src}" alt="App Screen" loading="eager">`;
-};
-
-// Build 3D devices with extruded bezel depth
-document.querySelectorAll('.p3').forEach(p => {
-  if (!p.closest('[data-rot]')) {
-    const a = parseFloat(p.style.getPropertyValue('--a')) || 0;
-    const b = parseFloat(p.style.getPropertyValue('--b')) || 0;
-    p.classList.add('st');
-    p.style.setProperty('--s', ((a + b) / 2 * (p.classList.contains('lp') ? 0.35 : 0.5)) + 'deg');
-  }
-  let layers = '';
-  const count = p.classList.contains('lp') ? 6 : 8;
-  for (let k = count; k >= 1; k--) {
-    layers += `<div class="l" style="transform:translateZ(-${k * 0.16}cqw)"></div>`;
-  }
-  const key = p.dataset.i;
-  const existingDecorations = p.innerHTML;
-  p.innerHTML = layers + `<div class="f">${renderMedia(A[key])}${existingDecorations}</div>`;
-});
-
-document.querySelectorAll('[data-senya]').forEach(e => e.style.backgroundImage = `url(${A.senya})`);
-document.querySelectorAll('.flat').forEach(e => e.style.backgroundImage = `url(${A[e.dataset.s]})`);
-
-document.querySelectorAll('[data-k]').forEach(e => {
-  e.innerHTML = e.dataset.k.split(' ').map((w, i) => `<span class="w" style="--i:${i}">${w}</span>`).join('');
-  e.classList.add('k');
-});
-
-function launchConfetti() {
-  const colors = ['#f59e0b', '#2563eb', '#38bdf8', '#10b981', '#f43f5e', '#a855f7'];
-  for (let i = 0; i < 80; i++) {
-    const cf = document.createElement('div');
-    cf.className = 'cf';
-    const s = 0.7 + Math.random() * 1.3;
-    cf.style.cssText = `
-      left: ${Math.random() * 100}%;
-      width: ${s}cqw;
-      height: ${s * 0.7}cqw;
-      background: ${colors[i % colors.length]};
-      animation-duration: ${2.2 + Math.random() * 2}s;
-      animation-delay: ${Math.random() * 0.7}s;
-      transform: rotate(${Math.random() * 360}deg);
-    `;
-    stage.appendChild(cf);
-    setTimeout(() => cf.remove(), 4800);
-  }
-}
-
-/* ========================================================
-   CINEMATIC SOUND DESIGN & SFX SYNTHESIZER
-   ======================================================== */
-class AudioEngine {
-  constructor() {
-    this.ac = null;
-    this.masterGain = null;
-    this.musicGain = null;
-    this.sfxGain = null;
-    this.noiseBuffer = null;
-    this.muted = false;
-    this.tempo = 124;
-    this.schedTimer = null;
-    this.nextTick = 0;
-    this.stepIndex = 0;
-    this.level = 0;
-  }
-
-  init() {
-    if (this.ac) return;
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    this.ac = new AudioContext();
-    
-    const comp = this.ac.createDynamicsCompressor();
-    comp.threshold.value = -16;
-    comp.knee.value = 20;
-    comp.ratio.value = 4;
-    comp.attack.value = 0.005;
-    comp.release.value = 0.2;
-    comp.connect(this.ac.destination);
-
-    this.masterGain = this.ac.createGain();
-    this.masterGain.gain.value = 0.95;
-    this.masterGain.connect(comp);
-
-    this.musicGain = this.ac.createGain();
-    this.musicGain.gain.value = 0.75;
-    this.musicGain.connect(this.masterGain);
-
-    this.sfxGain = this.ac.createGain();
-    this.sfxGain.gain.value = 0.95;
-    this.sfxGain.connect(this.masterGain);
-
-    this.noiseBuffer = this.ac.createBuffer(1, this.ac.sampleRate * 2, this.ac.sampleRate);
-    const d = this.noiseBuffer.getChannelData(0);
-    for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
-  }
-
-  resume() {
-    this.init();
-    if (this.ac.state === 'suspended') this.ac.resume();
-  }
-
-  setMuted(muted) {
-    this.muted = muted;
-    if (this.masterGain) {
-      this.masterGain.gain.setTargetAtTime(muted ? 0 : 0.95, this.ac.currentTime, 0.05);
-    }
-  }
-
-  sfxWhoosh(duration = 0.6) {
-    if (!this.ac || this.muted) return;
-    const t = this.ac.currentTime;
-    const src = this.ac.createBufferSource();
-    src.buffer = this.noiseBuffer;
-    
-    const filter = this.ac.createBiquadFilter();
-    filter.type = 'bandpass';
-    filter.Q.value = 2.5;
-    filter.frequency.setValueAtTime(400, t);
-    filter.frequency.exponentialRampToValueAtTime(2800, t + duration * 0.4);
-    filter.frequency.exponentialRampToValueAtTime(200, t + duration);
-
-    const gain = this.ac.createGain();
-    gain.gain.setValueAtTime(0.001, t);
-    gain.gain.linearRampToValueAtTime(0.35, t + duration * 0.35);
-    gain.gain.exponentialRampToValueAtTime(0.001, t + duration);
-
-    src.connect(filter);
-    filter.connect(gain);
-    gain.connect(this.sfxGain);
-    src.start(t);
-    src.stop(t + duration);
-  }
-
-  sfxSubBoom() {
-    if (!this.ac || this.muted) return;
-    const t = this.ac.currentTime;
-    const osc = this.ac.createOscillator();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(95, t);
-    osc.frequency.exponentialRampToValueAtTime(32, t + 0.4);
-
-    const gain = this.ac.createGain();
-    gain.gain.setValueAtTime(0.65, t);
-    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.55);
-
-    osc.connect(gain);
-    gain.connect(this.sfxGain);
-    osc.start(t);
-    osc.stop(t + 0.6);
-  }
-
-  sfxChime(note = 72) {
-    if (!this.ac || this.muted) return;
-    const t = this.ac.currentTime;
-    const freq = 440 * 2 ** ((note - 69) / 12);
-    
-    const o1 = this.ac.createOscillator();
-    o1.type = 'sine';
-    o1.frequency.value = freq;
-    
-    const o2 = this.ac.createOscillator();
-    o2.type = 'triangle';
-    o2.frequency.value = freq * 2.76;
-
-    const g = this.ac.createGain();
-    g.gain.setValueAtTime(0.35, t);
-    g.gain.exponentialRampToValueAtTime(0.001, t + 0.8);
-
-    o1.connect(g);
-    o2.connect(g);
-    g.connect(this.sfxGain);
-    o1.start(t);
-    o2.start(t);
-    o1.stop(t + 0.85);
-    o2.stop(t + 0.85);
-  }
-
-  sfxScanBeep() {
-    if (!this.ac || this.muted) return;
-    const t = this.ac.currentTime;
-    [1200, 1800, 2400].forEach((f, idx) => {
-      const osc = this.ac.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.value = f;
-      const g = this.ac.createGain();
-      g.gain.setValueAtTime(0.12, t + idx * 0.06);
-      g.gain.exponentialRampToValueAtTime(0.001, t + idx * 0.06 + 0.08);
-      osc.connect(g);
-      g.connect(this.sfxGain);
-      osc.start(t + idx * 0.06);
-      osc.stop(t + idx * 0.06 + 0.1);
-    });
-  }
-
-  sfxClick() {
-    if (!this.ac || this.muted) return;
-    const t = this.ac.currentTime;
-    const osc = this.ac.createOscillator();
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(1200, t);
-    osc.frequency.exponentialRampToValueAtTime(200, t + 0.04);
-    const g = this.ac.createGain();
-    g.gain.setValueAtTime(0.25, t);
-    g.gain.exponentialRampToValueAtTime(0.001, t + 0.04);
-    osc.connect(g);
-    g.connect(this.sfxGain);
-    osc.start(t);
-    osc.stop(t + 0.05);
-  }
-
-  sfxFanfare() {
-    if (!this.ac || this.muted) return;
-    const notes = [60, 64, 67, 72, 76];
-    notes.forEach((n, idx) => {
-      setTimeout(() => this.sfxChime(n), idx * 75);
-    });
-  }
-
-  startMusic() {
-    this.resume();
-    this.nextTick = this.ac.currentTime + 0.1;
-    this.stepIndex = 0;
-    clearInterval(this.schedTimer);
-    this.schedTimer = setInterval(() => this.scheduleLoop(), 40);
-  }
-
-  stopMusic() {
-    clearInterval(this.schedTimer);
-  }
-
-  scheduleLoop() {
-    while (this.nextTick < this.ac.currentTime + 0.25) {
-      this.playStep(this.stepIndex, this.nextTick);
-      this.nextTick += (60 / this.tempo) / 4;
-      this.stepIndex++;
-    }
-  }
-
-  playStep(step, time) {
-    const chords = [
-      [48, 52, 55, 60],
-      [43, 47, 50, 55],
-      [45, 48, 52, 57],
-      [41, 45, 48, 53]
+    const dlc = (a, b) => `<div class="u-row"><div class="u-ico"><b></b></div><div><div style="font-size:1.3cqw">${a}</div><div class="u-lab" style="font-size:.7cqw;letter-spacing:.08em">${b}</div></div></div>`;
+    T.url = () => `<div class="u-row" style="gap:.8cqw"><span style="width:1.2cqw;height:1.2cqw;border-radius:50%;background:#2f6be8"></span><span style="font-size:1.7cqw">señas.tech</span></div>`;
+    T.gs = () => `<div style="text-align:center;font-size:1.6cqw;white-space:nowrap">Get Started →</div>`;
+    [['dlA', '178 MB', 'DOWNLOAD SIZE'], ['dlB', 'Android 7.0+', 'REQUIRES NOUGAT & UP'], ['dlC', 'v1.4', 'LATEST RELEASE'], ['dlD', 'Direct .APK', 'SAFE & VERIFIED']].forEach(([k, a, b]) => T[k] = () => dlc(a, b));
+    /* ===== TIMELINE: every number is in BEATS. W=word D=device C=card ===== */
+    const BPM = 124, BT = 60 / BPM, SC = document.getElementById('scenes');
+    const T3 = (x = 0, y = 0, z = 0, rx = 0, ry = 0, rz = 0, s = 1) => `translate3d(${x}cqw,${y}cqw,${z}cqw) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${s})`;
+    const W = (t, b, e, x, y, s, c, a = 'slam') => ({ t, b, e, x, y, s, c, a }), D = (i, x, y, w, kf, o = {}) => ({ i, x, y, w, kf, ...o }), C = (u, x, y, w, b, o = {}) => ({ u, x, y, w, b, ...o });
+    const S = [
+/*1 hook*/{
+        n: 8, bg: 'lilac', m: 0, w: [W('Learning', 0, 1, 50, 28, 9, 'c-ink', 'rise'), W('Filipino', 1, 2, 50, 28, 10, 'c-g'), W('Sign', 2, 3, 50, 28, 12, 'c-g', 'zoom'), W('Language', 3, 4, 50, 28, 10, 'c-gb', 'drop'), W('from just', 4, 5, 50, 22, 6, 'c-ink', 'flip'), W('pictures?', 5, 6, 50, 33, 11, 'c-ink'), W('Not anymore.', 6, 8, 50, 28, 11, 'c-gb', 'pop')],
+        d: [D('q1', 20, 30, 13, [[0, T3(0, -50), 0], [4, T3(0, -50), 0], [4.6, T3(0, 0, 0, 0, 25, -8), 1], [6, T3(0, 0, 6, 0, -10, 6), 1], [6.6, T3(-10, 60, 0, 30, 0, -40, .6), 0], [8, T3(-10, 60), 0]], { ar: 1, gr: 1 }), D('q2', 80, 28, 13, [[0, T3(0, -50), 0], [4.3, T3(0, -50), 0], [4.9, T3(0, 0, 0, 0, -25, 8), 1], [6, T3(0, 0, 6, 0, 10, -6), 1], [6.6, T3(10, 60, 0, 30, 0, 40, .6), 0], [8, T3(10, 60), 0]], { ar: 1, gr: 1 })]
+      },
+/*2 reveal*/{
+        n: 6, bg: 'blue', tr: 'iris', m: 2, cf: [0], w: [W('SEÑAS', 0, 6, 50, 31, 17, 'c-gold', 'letters'), W('Filipino Sign Language', 2, 6, 50, 43, 3.6, 'c-w', 'wipe'), W('made playful.', 3.5, 6, 50, 49.5, 5, 'c-w', 'pop')],
+        d: [D('senya', 50, 11, 13, [[0, T3(0, -30, 0, 0, 0, 0, .3), 0], [.8, T3(0, 2, 0, 0, 0, -6, 1.1), 1], [1.4, T3(), 1], [3, T3(0, -1, 0, 0, 0, 4, 1.05), 1], [6, T3(), 1]], { k: 's' })]
+      },
+/*3 detect*/{
+        n: 10, bg: 'night', tr: 'slide', m: 2, w: [W('Sign.', 1, 2.5, 26, 24, 10, 'c-g'), W('Detect.', 2.5, 4, 26, 24, 10, 'c-gb', 'drop'), W('Improve.', 4, 5.5, 26, 24, 9.5, 'c-g', 'flip'), W('Real-time', 5.5, 10, 24, 20, 6.5, 'c-w', 'rise'), W('feedback.', 6.5, 10, 24, 31, 8, 'c-gold', 'wipe')],
+        d: [D('det', 66, 30, 22, [[0, T3(50, -10, -30, 0, -160, 0, .6), 0], [1, T3(30, -4, -10, 4, -90, 0, .8), 1], [2.2, T3(0, 0, 0, 6, -28), 1], [5, T3(-2, 0, 6, -4, 16, -3, 1.18), 1], [8, T3(2, 0, 0, 8, -20, 4, 1.05), 1], [10, T3(0, 0, 2, 0, -8, 0, 1.1), 1]])],
+        c: [C('feed', 61, 10, 17, 3.2, { ry: 12 }), C('detect', 59, 47, 20, 5, { ry: 12 })]
+      },
+/*4 curriculum*/{
+        n: 10, bg: 'blue', tr: 'diag', m: 2, fx: [[2, '#fbbf24'], [4, '#ff5e7e'], [6, '#14b8a6'], [8, '#4c1d95']], w: [W('ALPHABETS', 0, 2, 50, 28, 11, 'c-w'), W('NUMBERS', 2, 4, 50, 28, 13, 'c-ink', 'drop'), W('GREETINGS', 4, 6, 50, 28, 11, 'c-w', 'flip'), W('SURVIVAL', 6, 8, 50, 28, 12, 'c-w', 'zoom'), W('CONVERSATION', 8, 10, 50, 28, 9.5, 'c-gold')],
+        d: [D('gest', 13, 29, 15, [[0, T3(-20, 10, 0, 0, 40, 6, .8), 0], [1.2, T3(0, 0, 0, 6, 26, -4), 1], [10, T3(2, -3, 8, -6, 14, 4, 1.15), 1]]), D('quiz', 87, 27, 15, [[0, T3(20, 10, 0, 0, -40, -6, .8), 0], [1.6, T3(0, 0, 0, 6, -26, 4), 1], [10, T3(-2, -3, 8, -6, -14, -4, 1.15), 1]])]
+      },
+/*5 modes*/{
+        n: 14, bg: 'gold', tr: 'left', m: 2, fx: [[7, '#14b8a6', 72, 28]], w: [W('Pick', 0, 1, 72, 22, 10, 'c-ink', 'rise'), W('your', 1, 2, 72, 22, 10, 'c-ink', 'rise'), W('mode.', 2, 4, 72, 22, 12, 'c-w', 'pop'), W('MASTER', 4, 7, 70, 14, 9, 'c-w', 'slam'), W('Target', 5, 7, 70, 24, 5.5, 'c-ink', 'rise'), W('weak signs.', 6, 7, 70, 33, 6.5, 'c-w', 'wipe'), W('INFINITE', 7, 14, 28, 13, 9, 'c-w', 'flip'), W('Practice', 8.5, 14, 28, 24, 5.5, 'c-w', 'rise'), W('zero pressure.', 10, 14, 28, 34, 6.5, 'c-gold', 'wipe')],
+        d: [D('chal', 30, 29, 19, [[0, T3(-40, 0, 0, 0, -180, 0, .5), 0], [2, T3(0, 0, 4, 6, 22, -2), 1], [6.5, T3(1, 0, 8, -4, 28, 2, 1.05), 1], [7.4, T3(30, -4, 10, 0, -70, 0, 1), 1], [9, T3(42, 0, 6, 4, -24, 2, 1.05), 1], [14, T3(44, 0, 10, 0, -18, 0, 1.1), 1]])],
+        c: [C('master', 31, 28, 15, 4.4, { fy: '0cqw', ry: 10, ex: 7 }), C('infinite', 73, 28, 15, 9, { fy: '0cqw', ry: -10 })]
+      },
+/*6 compete*/{
+        n: 12, bg: 'coral', tr: 'up', m: 2, cf: [5], w: [W('Compete.', 0, 2, 50, 9, 8, 'c-w'), W('Climb.', 2, 4, 50, 9, 8, 'c-w', 'drop'), W('Rank', 4, 5, 50, 9, 8, 'c-w', 'rise'), W('#1', 5, 12, 50, 9, 13, 'c-gold', 'pop')],
+        d: [D('res', 34, 36, 16, [[0, T3(-10, 40, 0, 0, -40, -8, .8), 0], [2.5, T3(0, 0, 0, 4, -14, -3), 1], [8, T3(0, -1, 5, -4, 12, 2, 1.04), 1], [12, T3(1, 0, 8, 0, 0, 0, 1.08), 1]]), D('lead', 66, 36, 16, [[0, T3(10, 40, 0, 0, 40, 8, .8), 0], [1.2, T3(10, 40, 0, 0, 40, 8, .8), 0], [3.5, T3(0, 0, 0, 4, 14, 3), 1], [9, T3(0, -1, 5, -4, -12, -2, 1.04), 1], [12, T3(-1, 0, 8, 0, 0, 0, 1.08), 1]])],
+        c: [C('result', 34, 36, 15, 3, { fy: '0cqw', ry: 8 }), C('rank', 66, 22, 18, 5, { fy: '0cqw', ry: -8 })]
+      },
+/*7 rewards*/{
+        n: 10, bg: 'lilac', tr: 'down', m: 2, cf: [4.5], w: [W('Earn', 0, 3.5, 24, 20, 10, 'c-ink', 'rise'), W('certificates.', 1, 3.5, 24, 31, 6.6, 'c-g', 'wipe'), W('Unlock', 4, 10, 24, 20, 10, 'c-ink', 'slam'), W('badges.', 5, 10, 24, 32, 10, 'c-gb', 'drop')],
+        d: [D('cert', 60, 30, 17, [[0, T3(20, 30, 0, 0, 90, 0, .6), 0], [2, T3(0, 0, 0, 4, -24, -3), 1], [7, T3(0, -1, 6, -4, 14, 2, 1.06), 1], [10, T3(0, 0, 8, 0, -6, 0, 1.1), 1]]), D('ach', 84, 28, 17, [[0, T3(30, 30, 0, 0, 90, 0, .6), 0], [3, T3(30, 30, 0, 0, 90, 0, .6), 0], [4.5, T3(0, 0, 0, 4, -20, 3), 1], [10, T3(-1, -1, 8, -4, -8, 0, 1.08), 1]])],
+        c: [C('cert', 60, 26, 15, 2, { fy: '0cqw', ry: 8 }), C('ach', 84, 24, 14, 5, { fy: '0cqw', ry: -8 })]
+      },
+/*8 teachers*/{
+        n: 8, bg: 'night', tr: 'split', m: 1, line: [1.5, 3.5, 'M24 34 C 34 56, 40 14, 47 34'], w: [W('Teachers,', 0, 2.5, 50, 9, 9, 'c-w'), W('your turn.', 2.5, 8, 50, 9, 10, 'c-gold', 'pop')],
+        d: [D('home', 17, 34, 11, [[0, T3(-15, 8, 0, 0, 40, 0, .6), 0], [.8, T3(0, 0, 0, 0, 22), 1], [8, T3(0, -1, 6, 0, -10), 1]]), D('senya', 36, 44, 9, [[0, T3(-30), 0], [2, T3(-30), 0], [2.4, T3(-14, -6, 0, 0, 0, -8), 1], [4.5, T3(8, -4, 0, 0, 0, 6), 1], [8, T3(24, -8, 0, 0, 0, 0, 1.1), 1]], { k: 's' }), D('dash', 69, 38, 42, [[0, T3(0, 15, -20, 10, 40, 0, .5), 0], [3.5, T3(0, 15, -20, 10, 40, 0, .5), 0], [4.5, T3(0, 0, 0, 6, -24), 1], [8, T3(0, 0, 4, 2, -12, 0, 1.06), 1]], { l: 1 })]
+      },
+/*9 dashboard*/{
+        n: 12, bg: 'sky', tr: 'zoom', m: 2, w: [W('Track', 0, 12, 22, 13, 8, 'c-ink', 'rise'), W('every', 1.5, 12, 22, 22, 7, 'c-ink', 'rise'), W('student.', 3, 12, 22, 32, 8.5, 'c-gb', 'wipe')],
+        d: [D('dash', 64, 32, 50, [[0, T3(30, 10, -30, 12, -50, 4, .8), 0], [2.5, T3(0, 0, 0, 8, -22, -1), 1], [6, T3(-2, -1, 8, -6, 10, 2, 1.1), 1], [9, T3(3, 2, 4, 10, 24, 0, 1.18), 1], [12, T3(0, 0, 8, 2, -8, 0, 1.05), 1]], { l: 1 })],
+        c: [C('k1', 47.5, 34, 12.2, 3, { fy: '8cqw', ry: 6 }), C('k2', 60, 34, 12.2, 4, { fy: '8cqw', ry: 4 }), C('k3', 72.5, 34, 12.2, 5, { fy: '8cqw', ry: -4 }), C('k4', 85, 34, 12.2, 6, { fy: '8cqw', ry: -6 })]
+      },
+/*10 analytics*/{
+        n: 10, bg: 'night', tr: 'diagR', m: 2, w: [W('Spot', 0, 5.8, 22, 13, 8.5, 'c-w', 'rise'), W('weak', 1, 5.8, 22, 23, 8.5, 'c-gold', 'rise'), W('signs.', 2, 5.8, 22, 33, 8.5, 'c-w', 'wipe'), W('Stay', 6, 10, 22, 16, 9, 'c-w', 'slam'), W('in the', 7, 10, 22, 26, 6, 'c-w', 'rise'), W('loop.', 8, 10, 22, 36, 10, 'c-gb', 'pop')],
+        d: [D('ana', 66, 31, 46, [[0, T3(30, 0, -30, 10, -60, 0, .8), 0], [1.5, T3(0, 0, 0, 6, -24), 1], [5.5, T3(0, 0, 8, -4, 16, 0, 1.1), 1], [6, T3(-30, 0, -20, 0, 50, 0, .8), 0], [10, T3(-30, 0, -20, 0, 50, 0, .8), 0]], { l: 1 }), D('noti', 66, 31, 46, [[0, T3(30, 0, -20, 0, -50, 0, .8), 0], [6, T3(30, 0, -20, 0, -50, 0, .8), 0], [7, T3(0, 0, 0, 6, -20), 1], [10, T3(0, 0, 6, -2, 14, 0, 1.06), 1]], { l: 1 })],
+        c: [C('letj', 59, 31, 22, 2.5, { fy: '4cqw', ry: 6, ex: 5.8 }), C('ins', 81, 26, 17, 4, { fy: '4cqw', ry: -8, ex: 5.8 })]
+      },
+/*11 lessons*/{
+        n: 10, bg: 'lilac', tr: 'up', m: 2, w: [W('Upload', 0, 5, 21, 20, 8, 'c-ink', 'rise'), W('lessons.', 1, 5, 21, 31, 8, 'c-g', 'wipe'), W('Manage', 5, 10, 21, 20, 8, 'c-ink', 'slam'), W('students.', 6, 10, 21, 31, 7.5, 'c-gb', 'drop')],
+        d: [D('lessons', 64, 30, 46, [[0, T3(30, 5, -30, 10, -60, 0, .8), 0], [1.5, T3(0, 0, 0, 6, -22), 1], [4.5, T3(0, 0, 8, -4, 14, 0, 1.08), 1], [5, T3(-30, 0, -20, 0, 50, 0, .8), 0], [10, T3(-30, 0, -20, 0, 50, 0, .8), 0]], { l: 1 }), D('students', 64, 30, 46, [[0, T3(30, 0, -20, 0, -50, 0, .8), 0], [5, T3(30, 0, -20, 0, -50, 0, .8), 0], [6.2, T3(0, 0, 0, 6, -20), 1], [10, T3(0, 0, 6, -2, 14, 0, 1.06), 1]], { l: 1 })],
+        c: [C('lA', 50, 28, 15, 2, { fy: '4cqw', ry: 6, ex: 5 }), C('lB', 66, 30, 15, 3, { fy: '4cqw', ry: -6, ex: 5 }), C('studs', 74, 28, 20, 7.5, { fy: '4cqw', ry: -8 })]
+      },
+/*12 one platform*/{
+        n: 8, bg: 'blue', tr: 'diag', m: 2, w: [W('One platform.', 0, 8, 50, 8, 8.5, 'c-w'), W('A whole', 3, 4, 50, 50, 6, 'c-w', 'rise'), W('classroom', 4, 5, 50, 50, 7, 'c-w', 'rise'), W('moving', 5, 6, 50, 50, 7, 'c-gold', 'rise'), W('forward.', 6, 8, 50, 50, 8, 'c-gold', 'pop')],
+        d: [D('home', 27, 30, 15, [[0, T3(-20, 10, -20, 0, 50, 0, .6), 0], [1.2, T3(0, 0, 0, 4, 24, -2), 1], [8, T3(2, -1, 8, -4, -14, 3, 1.1), 1]]), D('dash', 64, 30, 40, [[0, T3(20, 10, -20, 0, -50, 0, .6), 0], [1.6, T3(0, 0, 0, 4, -24, 2), 1], [8, T3(-2, 0, 8, -4, 14, -2, 1.1), 1]], { l: 1 }), D('senya', 90, 46, 11, [[0, T3(0, 20), 0], [2, T3(0, 20), 0], [2.6, T3(0, 0, 0, 0, 0, -8, 1.1), 1], [8, T3(), 1]], { k: 's' })]
+      },
+/*13 website*/{
+        n: 10, bg: 'sky', tr: 'left', m: 2, w: [
+          W('Visit our website', 0, 10, 24, 20, 6.2, 'c-ink', 'rise'),
+          W('señas.tech', 1.5, 10, 24, 29, 8.5, 'c-gb', 'pop'),
+          W('Learn & teach today.', 3.5, 10, 24, 38, 4, 'c-ink', 'rise')
+        ],
+        d: [D('site', 68, 30, 50, [[0, T3(30, 10, -30, 12, -50, 4, .8), 0], [2, T3(0, 0, 0, 8, -20, -1), 1], [6, T3(-2, -1, 8, -6, 10, 2, 1.1), 1], [10, T3(2, 0, 4, 6, -8, 0, 1.04), 1]], { l: 1 })],
+        c: [C('url', 68, 13, 15, 2, { fy: '-4cqw', ry: 0 }), C('gs', 84, 38, 14, 4, { fy: '4cqw', ry: -8 })]
+      },
+/*14 android*/{
+        n: 10, bg: 'blue', tr: 'down', m: 2, w: [
+          W('Available on', 0, 10, 24, 19, 5.8, 'c-w', 'rise'),
+          W('Android.', 1.5, 10, 24, 28, 8.8, 'c-gold', 'drop'),
+          W('Free to download.', 3.5, 10, 24, 37, 4.4, 'c-w', 'pop'),
+          W('iOS version coming soon', 5.5, 10, 24, 44, 2.8, 'c-w', 'rise')
+        ],
+        d: [
+          D('dl', 68, 27, 20, [[0, T3(30, 10, -30, 10, -50, 4, .8), 0], [2, T3(0, 0, 0, 6, -18, -1), 1], [6, T3(-2, -1, 8, -4, 8, 2, 1.08), 1], [10, T3(2, 0, 4, 4, -6, 0, 1.03), 1]], { ar: 0.462, r: '2.6cqw' }),
+          D('senya', 88, 10, 9.5, [[0, T3(0, -20), 0], [1.5, T3(0, -20), 0], [2.2, T3(0, 0, 0, 0, 0, -8, 1.1), 1], [10, T3(0, 0, 0, 0, 0, 6, 1.05), 1]], { k: 's' })
+        ],
+        c: [
+          C('dlA', 49, 21, 13, 3.5, { fy: '4cqw', ry: 8 }),
+          C('dlB', 49, 34, 13.5, 4.5, { fy: '4cqw', ry: 8 }),
+          C('dlC', 87, 21, 12.5, 5.5, { fy: '4cqw', ry: -8 }),
+          C('dlD', 87, 34, 13, 6.5, { fy: '4cqw', ry: -8 })
+        ]
+      },
+/*15 outro*/{
+        n: 10, bg: 'lilac', tr: 'iris', m: 2, cf: [0, 6], w: [W('SEÑAS', 0.5, 10, 50, 31, 15, 'c-blue', 'letters'), W('Filipino Sign Language', 2, 10, 50, 42, 3.8, 'c-ink', 'wipe'), W('For learners', 4, 10, 30, 49, 3.6, 'c-blue', 'pop'), W('For educators', 5, 10, 70, 49, 3.6, 'c-g', 'pop')],
+        d: [D('senya', 50, 11, 13, [[0, T3(0, -30, 0, 0, 0, 0, .3), 0], [.8, T3(0, 2, 0, 0, 0, -6, 1.1), 1], [1.4, T3(), 1], [10, T3(0, -1, 0, 0, 0, 4, 1.05), 1]], { k: 's' })]
+      }
     ];
-    const bar = Math.floor(step / 16) % 4;
-    const sub = step % 16;
-    const chord = chords[bar];
-    const hz = n => 440 * 2 ** ((n - 69) / 12);
+    let acc = 0; S.forEach(s => { s.t = acc; acc += s.n }); const TOT = acc, LV = []; S.forEach(s => { for (let k = 0; k < s.n; k++)LV.push(s.m) });
+    const CL = { ins: 'gold', rank: 'blue', master: 'or', infinite: 'te', gs: 'gold' };
+    const cf = (el, b) => { const C = ['#fbbf24', '#2f6be8', '#fff', '#6bb8ff', '#ff6b8b', '#3ddc97']; for (let i = 0; i < 70; i++) { const e = document.createElement('div'); e.className = 'cf'; const s = .7 + Math.random() * 1.2; e.style.cssText = `left:${Math.random() * 100}%;width:${s}cqw;height:${s}cqw;background:${C[i % 6]};animation-duration:${2.2 + Math.random() * 1.8}s;animation-delay:${b * BT + Math.random() * .6}s;opacity:.95`; el.appendChild(e) } };
+    function build(i, inst) {
+      const s = S[i], n = s.n, dur = n * BT * 1000, el = document.createElement('div'); el.className = 's on b-' + s.bg; el.style.zIndex = i + 1;
+      const dk = ['night', 'blue', 'coral'].includes(s.bg); let h = `<div class=bl style="left:-10cqw;top:15cqw;width:40cqw;height:40cqw;background:${dk ? 'rgba(120,110,255,.4)' : 'rgba(255,255,255,.5)'}"></div><div class=bl style="right:-8cqw;top:-10cqw;width:34cqw;height:34cqw;animation-delay:-3s;background:${dk ? 'rgba(255,100,200,.3)' : 'rgba(255,130,210,.35)'}"></div>`;
+      for (let k = 0; k < 7; k++) { const z = 1 + Math.random() * 3; h += `<div class=sq style="left:${Math.random() * 100}%;width:${z}cqw;height:${z}cqw;animation-duration:${7 + Math.random() * 9}s;animation-delay:-${Math.random() * 12}s;${dk ? '' : 'background:rgba(120,90,220,.12)'}"></div>` }
+      el.innerHTML = h;
+      (s.fx || []).forEach(f => { const d = document.createElement('div'); d.style.cssText = `position:absolute;inset:0;background:${f[1]}`; const x = f[2] || 50, y = f[3] || 28 * 1.78; d.animate({ clipPath: [`circle(0 at ${x}% ${y}%)`, `circle(150% at ${x}% ${y}%)`] }, { delay: f[0] * BT * 1000, duration: 560, easing: 'cubic-bezier(.7,0,.2,1)', fill: 'both' }); el.appendChild(d) });
+      const cam = document.createElement('div'); cam.className = 'cam'; cam.animate([{ scale: 1.14 }, { scale: 1, offset: .1 }, { scale: 1.06 }], { duration: dur, fill: 'both' }); el.appendChild(cam);
+      if (s.line) { const [a, b, p] = s.line; cam.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 100 56.25" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible"><path d="${p}" fill="none" stroke="#6bb8ff" stroke-width=".7" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="filter:drop-shadow(0 0 1cqw #6bb8ff);animation:dr ${(b - a) * BT}s ${a * BT}s ease-in-out forwards"/></svg>`) }
+      s.d.forEach(d => {
+        const e = document.createElement('div'), l = d.l, sen = d.k == 's'; e.className = 'dv' + (d.gr ? ' gr' : ''); const ar = d.ar || (sen ? 1 : l ? 1.76 : 1125 / 2436);
+        e.style.cssText = `left:${d.x}cqw;top:${d.y}cqw;width:${d.w}cqw;aspect-ratio:${ar};--r:${d.r || (l ? '.8cqw' : '2.6cqw')}`;
+        if (sen) { e.style.cssText += `;background:url(${A.senya}) center/cover;-webkit-mask-image:radial-gradient(circle,#000 52%,transparent 71%);mask-image:radial-gradient(circle,#000 52%,transparent 71%)` }
+        else { let q = ''; for (let k = 7; k >= 1; k--)q += `<div class=l style="transform:translateZ(-${k * .13}cqw)"></div>`; const m = A[d.i]; q += `<div class=f>${/\.(mp4|webm|mov)$/i.test(m) ? `<video src="${m}" autoplay muted loop playsinline></video>` : `<img src="${m}">`}</div>`; e.innerHTML = q }
+        e.animate(d.kf.map(k => ({ offset: k[0] / n, transform: k[1], opacity: k[2] ?? 1, easing: 'cubic-bezier(.6,0,.2,1)' })), { duration: dur, fill: 'both' }); cam.appendChild(e)
+      });
+      const cl = document.createElement('div'); cl.className = 'cl';
+      (s.c || []).forEach(c => {
+        const e = document.createElement('div'), d = c.b * BT; e.className = 'fl'; e.style.cssText = `left:${c.x}cqw;top:${c.y}cqw;--w:${c.w}cqw;--d:${d}s;--ry:${c.ry ?? 10}deg;--fx:${c.fx || '0cqw'};--fy:${c.fy || '4cqw'};--sc:${c.sc || 1}`;
+        if (c.ex) e.style.animation = `fl-in 1s var(--ease-spring) ${d}s both,fl-bob 4.6s ${d + 1}s ease-in-out infinite alternate,out .25s ease-in ${c.ex * BT}s forwards`;
+        e.innerHTML = `<div class="ui ${CL[c.u] || ''}">${T[c.u]()}</div>`; cl.appendChild(e)
+      });
+      const wl = document.createElement('div'); wl.className = 'wl';
+      s.w.forEach(w => {
+        const e = document.createElement('div'), dl = w.b * BT, ex = w.e * BT; e.className = 'wd ' + w.c + (w.a == 'rise' ? ' m' : ''); e.style.cssText = `left:${w.x}cqw;top:${w.y}cqw;font-size:${w.s}cqw`;
+        const out = w.e < n ? `out .22s ease-in ${ex}s forwards` : '';
+        if (w.a == 'letters') { e.innerHTML = [...w.t].map((c, k) => `<i style="animation:pop .45s var(--ease-spring) ${dl + k * .09}s both">${c}</i>`).join(''); if (out) e.style.animation = out }
+        else if (w.a == 'rise') { e.innerHTML = `<span style="display:inline-block;animation:rise .5s var(--ease-apple) ${dl}s both">${w.t}</span>`; if (out) e.style.animation = out }
+        else { e.textContent = w.t; e.style.animation = `${w.a} .55s var(--ease-spring) ${dl}s both${out ? ',' + out : ''}` } wl.appendChild(e)
+      });
+      el.appendChild(cl); el.appendChild(wl); (s.cf || []).forEach(b => cf(el, b)); SC.appendChild(el);
+      if (i > 0 && !inst) {
+        const [t, x, y] = (s.tr || 'iris').split(':'), X = x || 50, Y = y || 50; const F = { left: ['inset(0 100% 0 0)', 'inset(0)'], split: ['inset(0 50% 0 50%)', 'inset(0)'], zoom: ['inset(36% 36% 36% 36% round 4cqw)', 'inset(0% 0% 0% 0% round 0cqw)'], diagR: ['polygon(100% 0,100% 0,100% 100%,100% 100%)', 'polygon(-30% 0,100% 0,100% 100%,0 100%)'], iris: [`circle(0 at ${X}% ${Y}%)`, `circle(150% at ${X}% ${Y}%)`], slide: ['inset(0 0 0 100%)', 'inset(0)'], up: ['inset(100% 0 0 0)', 'inset(0)'], down: ['inset(0 0 100% 0)', 'inset(0)'], diag: ['polygon(0 0,0 0,0 100%,0 100%)', 'polygon(0 0,130% 0,100% 100%,0 100%)'] }[t];
+        el.animate({ clipPath: F }, { duration: 640, easing: 'cubic-bezier(.7,0,.2,1)', fill: 'both' }); setTimeout(() => [...SC.children].slice(0, -1).forEach(o => o.remove()), 900)
+      }
+      return el
+    }
+    /* ===== MUSIC (generative, locked to the beat grid) ===== */
+    let ac, mg, on = true, nb, tm = [], raf, si = 0, nt = 0, wc = 0, tmr; const WS = new Set, RS = new Set, SSK = {};
+    S.forEach(s => { const k = (s.tr || 'iris').split(':')[0]; SSK[s.t * 4] = k; if (['iris', 'up', 'zoom'].includes(k)) RS.add(Math.max(0, s.t * 4 - 6)); s.w.forEach(w => WS.add(Math.round((s.t + w.b) * 4))) }); WS.delete(0);
+    const hz = n => 440 * 2 ** ((n - 69) / 12), CH = [[48, 52, 55, 60], [43, 47, 50, 55], [45, 48, 52, 57], [41, 45, 48, 53]], PEN = [72, 76, 79, 81, 84, 88, 91, 84], ARP = [0, 1, 2, 3, 2, 1, 2, 3, 0, 1, 2, 3, 2, 3, 1, 2];
+    function osc(ty, f, t, d, v, f2) { const o = ac.createOscillator(), g = ac.createGain(); o.type = ty; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + d); g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(.001, t + d); o.connect(g); g.connect(mg); o.start(t); o.stop(t + d + .05) }
+    function nz(t, d, v, hp, sw) { const s = ac.createBufferSource(); s.buffer = nb; const f = ac.createBiquadFilter(), g = ac.createGain(); f.type = 'highpass'; f.frequency.setValueAtTime(hp, t); if (sw) f.frequency.exponentialRampToValueAtTime(sw, t + d); g.gain.setValueAtTime(sw ? .001 : v, t); if (sw) g.gain.exponentialRampToValueAtTime(v, t + d * .95); else g.gain.exponentialRampToValueAtTime(.001, t + d); s.connect(f); f.connect(g); g.connect(mg); s.start(t, Math.random()); s.stop(t + d + .05) }
+    function bass(f, t) { const o = ac.createOscillator(), l = ac.createBiquadFilter(), g = ac.createGain(); o.type = 'sawtooth'; o.frequency.value = f; l.type = 'lowpass'; l.frequency.value = 600; g.gain.setValueAtTime(.45, t); g.gain.exponentialRampToValueAtTime(.001, t + .2); o.connect(l); l.connect(g); g.connect(mg); o.start(t); o.stop(t + .25) }
+    function sfx(k, t) {
+      if (k == 'iris') { nz(t, 1.1, .5, 800); osc('sine', 90, t, .9, .9, 35) }
+      else if (k == 'zoom') { osc('sawtooth', 200, t - .1, .3, .12, 1600); nz(t - .1, .3, .4, 500, 6000); osc('sine', 70, t, .5, .8, 35) }
+      else if (k == 'split') { nz(t, .2, .6, 1200); osc('square', 180, t, .08, .2); nz(t + .12, .15, .4, 2500); osc('sine', 60, t, .6, .8, 35) }
+      else if (k == 'down') { osc('sine', 700, t - .05, .5, .35, 60); nz(t, .35, .4, 4000, 500); osc('sine', 60, t, .5, .8, 35) }
+      else if (k == 'up') { nz(t - .35, .4, .4, 300, 6000); osc('sine', 300, t - .35, .4, .2, 1200); osc('sine', 70, t, .6, .8, 35) }
+      else { nz(t - .05, .5, .5, 7000, 600); osc('sine', 80, t, .6, .8, 35) }
+    }
+    function stp(i, t) {
+      const b = i >> 2, s = i & 15, c = CH[(i >> 4) & 3], L = LV[b] ?? 2;
+      if (L >= 1 && s % 4 == 0) osc('sine', 160, t, .22, 1, 45);
+      if (L >= 1 && (s == 4 || s == 12)) { nz(t, .15, L >= 2 ? .5 : .25, 1500); osc('triangle', 200, t, .08, .2) }
+      if (s % 2 == 0) nz(t, .04, s % 4 == 2 ? .16 : .09, 7500); if (L >= 2 && s % 4 == 2) nz(t, .14, .12, 6000);
+      if (L >= 1 && s % 4 == 2) bass(hz(c[0] - 12), t); if (L >= 2 && s % 4 == 0) osc('sine', hz(c[0] - 24), t, .3, .55);
+      if (s == 0) c.forEach(n => osc('triangle', hz(n + 12), t, 1.9, L ? .055 : .1));
+      if (L >= 2) osc('square', hz(c[ARP[s]] + 12), t, .13, .045);
+      if (WS.has(i)) { const n = PEN[wc++ % PEN.length]; osc('triangle', hz(n), t, .28, .24); osc('square', hz(n + 12), t, .08, .06); nz(t, .03, .25, 4000) }
+      if (SSK[i]) sfx(SSK[i], t);
+      if (RS.has(i) && i > 0) nz(t, .75, .35, 300, 7000)
+    }
+    function sched() { while (nt < ac.currentTime + .2) { stp(si, nt); nt += BT / 4; si++ } }
+    /* ===== PLAYER ENGINE ===== */
+    const ui = document.getElementById('ui'),
+          progFill = document.getElementById('prog-fill'),
+          ppIcon = document.getElementById('pp-icon'),
+          stage = document.getElementById('stage');
+    let paused = false, t0 = 0, elapsedMs = 0;
+    const PLAY_ICON = '<path d="M8 5v14l11-7z"/>',
+          PAUSE_ICON = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
 
-    if (sub % 4 === 0 && this.level >= 1) {
-      const osc = this.ac.createOscillator();
-      const g = this.ac.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(140, time);
-      osc.frequency.exponentialRampToValueAtTime(42, time + 0.2);
-      g.gain.setValueAtTime(0.85, time);
-      g.gain.exponentialRampToValueAtTime(0.001, time + 0.22);
-      osc.connect(g);
-      g.connect(this.musicGain);
-      osc.start(time);
-      osc.stop(time + 0.25);
+    function initAudio() {
+      if (!ac) {
+        ac = new (window.AudioContext || window.webkitAudioContext)();
+        const cp = ac.createDynamicsCompressor();
+        mg = ac.createGain();
+        mg.connect(cp);
+        cp.connect(ac.destination);
+        nb = ac.createBuffer(1, ac.sampleRate * 2, ac.sampleRate);
+        const d = nb.getChannelData(0);
+        for (let k = 0; k < d.length; k++) d[k] = Math.random() * 2 - 1;
+      }
     }
 
-    if ((sub === 4 || sub === 12) && this.level >= 2) {
-      const src = this.ac.createBufferSource();
-      src.buffer = this.noiseBuffer;
-      const f = this.ac.createBiquadFilter();
-      f.type = 'highpass';
-      f.frequency.value = 1600;
-      const g = this.ac.createGain();
-      g.gain.setValueAtTime(0.35, time);
-      g.gain.exponentialRampToValueAtTime(0.001, time + 0.16);
-      src.connect(f);
-      f.connect(g);
-      g.connect(this.musicGain);
-      src.start(time);
-      src.stop(time + 0.18);
+    function play() {
+      initAudio();
+      ac.resume();
+      mg.gain.value = on ? .9 : 0;
+      clearInterval(tmr);
+      tm.forEach(clearTimeout);
+      tm = [];
+      cancelAnimationFrame(raf);
+      SC.innerHTML = '';
+      ui.classList.add('hide');
+      stage.classList.remove('is-paused');
+      stage.classList.add('playing');
+      paused = false;
+      ppIcon.innerHTML = PAUSE_ICON;
+
+      si = 0; wc = 0;
+      nt = ac.currentTime + .15;
+      tmr = setInterval(sched, 40);
+
+      t0 = performance.now() + 150;
+      elapsedMs = 0;
+      S.forEach((s, i) => tm.push(setTimeout(() => build(i), 150 + s.t * BT * 1000)));
+      tm.push(setTimeout(() => {
+        ui.classList.remove('hide');
+        document.getElementById('go').textContent = 'Replay';
+        clearInterval(tmr);
+        ppIcon.innerHTML = PLAY_ICON;
+        stage.classList.remove('playing');
+      }, 150 + TOT * BT * 1000 + 700));
+
+      (function tick() {
+        if (!paused) {
+          const curPct = Math.max(0, Math.min(100, (performance.now() - t0) / 10 / (TOT * BT)));
+          progFill.style.width = curPct + '%';
+          raf = requestAnimationFrame(tick);
+        }
+      })();
     }
 
-    if (this.level >= 1 && sub % 2 === 0) {
-      const src = this.ac.createBufferSource();
-      src.buffer = this.noiseBuffer;
-      const f = this.ac.createBiquadFilter();
-      f.type = 'highpass';
-      f.frequency.value = 7500;
-      const g = this.ac.createGain();
-      g.gain.setValueAtTime(sub % 4 === 2 ? 0.2 : 0.08, time);
-      g.gain.exponentialRampToValueAtTime(0.001, time + 0.05);
-      src.connect(f);
-      f.connect(g);
-      g.connect(this.musicGain);
-      src.start(time);
-      src.stop(time + 0.06);
-    }
+    function togglePlayPause() {
+      if (!ac || !ui.classList.contains('hide')) {
+        play();
+        return;
+      }
+      if (!paused) {
+        /* PAUSE */
+        paused = true;
+        elapsedMs = Math.max(0, performance.now() - t0);
+        cancelAnimationFrame(raf);
+        clearInterval(tmr);
+        tm.forEach(clearTimeout);
+        tm = [];
+        if (ac) ac.suspend();
+        stage.classList.add('is-paused');
+        document.getAnimations().forEach(a => { try { a.pause(); } catch(e){} });
+        ppIcon.innerHTML = PLAY_ICON;
+      } else {
+        /* RESUME */
+        paused = false;
+        stage.classList.remove('is-paused');
+        document.getAnimations().forEach(a => { try { a.play(); } catch(e){} });
+        t0 = performance.now() - elapsedMs;
 
-    if (this.level >= 1 && [0, 3, 6, 8, 11, 14].includes(sub)) {
-      const osc = this.ac.createOscillator();
-      const f = this.ac.createBiquadFilter();
-      const g = this.ac.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(hz(chord[0] - 12), time);
-      f.type = 'lowpass';
-      f.frequency.setValueAtTime(450, time);
-      g.gain.setValueAtTime(0.45, time);
-      g.gain.exponentialRampToValueAtTime(0.001, time + 0.24);
-      osc.connect(f);
-      f.connect(g);
-      g.connect(this.musicGain);
-      osc.start(time);
-      osc.stop(time + 0.26);
-    }
-
-    if (this.level >= 1) {
-      const arpNotes = [0, 1, 2, 3, 2, 1, 2, 3, 0, 1, 2, 3, 2, 3, 2, 1];
-      const note = chord[arpNotes[sub]] + 12;
-      const osc = this.ac.createOscillator();
-      const g = this.ac.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(hz(note), time);
-      g.gain.setValueAtTime(0.12, time);
-      g.gain.exponentialRampToValueAtTime(0.001, time + 0.16);
-      osc.connect(g);
-      g.connect(this.musicGain);
-      osc.start(time);
-      osc.stop(time + 0.18);
-    }
-
-    if (this.level >= 2 && sub % 2 === 1) {
-      const note = chord[(sub >> 1) % 4] + 24;
-      const osc = this.ac.createOscillator();
-      const g = this.ac.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(hz(note), time);
-      g.gain.setValueAtTime(0.06, time);
-      g.gain.exponentialRampToValueAtTime(0.001, time + 0.12);
-      osc.connect(g);
-      g.connect(this.musicGain);
-      osc.start(time);
-      osc.stop(time + 0.14);
-    }
-  }
-}
-
-const audio = new AudioEngine();
-
-/* ========================================================
-   TIMELINE, SEQUENCER & CINEMATIC PLAYER LOGIC
-   ======================================================== */
-const wipe = document.getElementById('wipe');
-const playOverlay = document.getElementById('play-overlay');
-const playerUi = document.getElementById('player-ui');
-const btnHeroPlay = document.getElementById('btn-hero-play');
-const btnPlay = document.getElementById('btn-play');
-const btnPrev = document.getElementById('btn-prev');
-const btnNext = document.getElementById('btn-next');
-const btnMute = document.getElementById('btn-mute');
-const btnFullscreen = document.getElementById('btn-fullscreen');
-const btnDownload = document.getElementById('btn-download');
-const btnCleanMode = document.getElementById('btn-clean-mode');
-const iconPlay = document.getElementById('icon-play');
-const iconPause = document.getElementById('icon-pause');
-const iconVolOn = document.getElementById('icon-vol-on');
-const iconVolOff = document.getElementById('icon-vol-off');
-const scrubberBar = document.getElementById('scrubber-bar');
-const scrubberFill = document.getElementById('scrubber-fill');
-const scrubberHead = document.getElementById('scrubber-head');
-const timeCur = document.getElementById('time-cur');
-const timeTot = document.getElementById('time-tot');
-const sceneBadge = document.getElementById('scene-badge');
-
-const totalDuration = S.reduce((sum, s) => sum + parseFloat(s.dataset.d), 0);
-const sceneDurations = S.map(s => parseFloat(s.dataset.d));
-const sceneStartTimes = [];
-let accumulated = 0;
-sceneDurations.forEach(d => {
-  sceneStartTimes.push(accumulated);
-  accumulated += d;
-});
-
-sceneStartTimes.forEach((st, idx) => {
-  if (idx === 0) return;
-  const mark = document.createElement('div');
-  mark.className = 'chapter-mark';
-  mark.style.left = `${(st / totalDuration) * 100}%`;
-  scrubberBar.querySelector('.scrubber-track').appendChild(mark);
-});
-
-const formatTime = sec => {
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return `${m}:${s < 10 ? '0' : ''}${s}`;
-};
-timeTot.textContent = formatTime(totalDuration);
-
-let currentSceneIndex = 0;
-let isPlaying = false;
-let sceneTimeout = null;
-let playbackStartTime = 0;
-let rafTicker = null;
-let uiHideTimer = null;
-let isCleanMode = false;
-
-const SCENE_ENERGY = [0, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2];
-
-function transitionToScene(index, skipWipe = false) {
-  if (index < 0) index = 0;
-  if (index >= S.length) {
-    onPlaybackEnded();
-    return;
-  }
-
-  currentSceneIndex = index;
-  const targetScene = S[index];
-  audio.level = SCENE_ENERGY[index] || 1;
-
-  if (BG_THEMES[index]) {
-    setSceneBackground(BG_THEMES[index], skipWipe);
-  }
-  const isLight = targetScene.dataset.theme === 'light';
-  stageContainer.setAttribute('data-current-theme', isLight ? 'light' : 'dark');
-  const auroraEl = document.getElementById('aurora');
-  if (auroraEl) {
-    auroraEl.style.opacity = isLight ? '0.15' : '0.85';
-  }
-
-  if (index === 0) {
-    audio.sfxSubBoom();
-  } else if (index === 2) {
-    audio.sfxSubBoom();
-    audio.sfxFanfare();
-    launchConfetti();
-  } else if (index === 3) {
-    audio.sfxSubBoom();
-    setTimeout(() => audio.sfxScanBeep(), 800);
-    setTimeout(() => audio.sfxChime(76), 1600);
-  } else if (index === 6) {
-    audio.sfxFanfare();
-    launchConfetti();
-  } else if (index === 8) {
-    audio.sfxWhoosh(0.8);
-    audio.sfxSubBoom();
-  } else if (index === 9) {
-    audio.sfxSubBoom();
-    setTimeout(() => audio.sfxClick(), 2300);
-    setTimeout(() => audio.sfxChime(79), 2400);
-  } else if (index === 10) {
-    audio.sfxSubBoom();
-    setTimeout(() => audio.sfxChime(74), 1400);
-  } else if (index === 11) {
-    audio.sfxFanfare();
-    launchConfetti();
-  } else {
-    audio.sfxSubBoom();
-  }
-
-  const applyScene = () => {
-    S.forEach((s, j) => {
-      s.classList.toggle('on', j === index);
-      if (j === index) {
-        s.querySelectorAll('*').forEach(el => {
-          const prev = el.style.animationName;
-          el.style.animationName = 'none';
-          el.offsetHeight;
-          el.style.animationName = prev || '';
+        /* Reschedule remaining scenes */
+        S.forEach((s, i) => {
+          const schedTime = 150 + s.t * BT * 1000;
+          if (schedTime > elapsedMs) {
+            tm.push(setTimeout(() => build(i), schedTime - elapsedMs));
+          }
         });
+        const endSched = 150 + TOT * BT * 1000 + 700;
+        if (endSched > elapsedMs) {
+          tm.push(setTimeout(() => {
+            ui.classList.remove('hide');
+            document.getElementById('go').textContent = 'Replay';
+            clearInterval(tmr);
+            ppIcon.innerHTML = PLAY_ICON;
+            stage.classList.remove('playing');
+          }, endSched - elapsedMs));
+        }
+
+        /* Resume audio */
+        if (ac) {
+          ac.resume();
+          mg.gain.value = on ? .9 : 0;
+          nt = ac.currentTime + .05;
+          si = Math.max(0, Math.floor(((elapsedMs - 150) / 1000) / (BT / 4)));
+          tmr = setInterval(sched, 40);
+        }
+
+        ppIcon.innerHTML = PAUSE_ICON;
+        (function tick() {
+          if (!paused) {
+            const curPct = Math.max(0, Math.min(100, (performance.now() - t0) / 10 / (TOT * BT)));
+            progFill.style.width = curPct + '%';
+            raf = requestAnimationFrame(tick);
+          }
+        })();
+      }
+    }
+
+    /* Controls button click listeners */
+    document.getElementById('playpause-btn').onclick = togglePlayPause;
+    document.getElementById('restart-btn').onclick = () => play();
+    document.getElementById('go').onclick = play;
+
+    /* Keyboard controls: Space for play/pause, 0 to restart */
+    document.addEventListener('keydown', e => {
+      if (e.key === '0') {
+        e.preventDefault();
+        play();
+      } else if (e.code === 'Space' || e.key === ' ') {
+        e.preventDefault();
+        togglePlayPause();
       }
     });
 
-    if (index === 8) {
-      const ln = S[index].querySelector('.ln');
-      if (ln) {
-        ln.style.animation = 'none';
-        ln.offsetHeight;
-        ln.style.animation = 'path-draw 2s 0.4s ease-in-out forwards';
+    /* Progress bar seek */
+    document.getElementById('prog-wrap').addEventListener('click', e => {
+      if (!ac) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      const seekMs = ratio * TOT * BT * 1000;
+      progFill.style.width = (ratio * 100) + '%';
+
+      /* Find which scene matches this timestamp */
+      let curIdx = 0;
+      for (let i = 0; i < S.length; i++) {
+        if (S[i].t * BT * 1000 <= seekMs) curIdx = i;
       }
-    }
+      const secInScene = (seekMs - S[curIdx].t * BT * 1000) / 1000;
 
-    sceneBadge.textContent = `${index + 1} / ${S.length} · ${targetScene.dataset.name || 'Scene'}`;
-  };
+      SC.innerHTML = '';
+      ui.classList.add('hide');
+      build(curIdx, 1);
 
-  if (skipWipe || index === 0) {
-    applyScene();
-  } else {
-    audio.sfxWhoosh(0.7);
-    wipe.classList.remove('run');
-    wipe.offsetHeight;
-    wipe.classList.add('run');
-    setTimeout(applyScene, 350);
-  }
-
-  clearTimeout(sceneTimeout);
-
-  if (isPlaying) {
-    const durationMs = parseFloat(targetScene.dataset.d) * 1000;
-    sceneTimeout = setTimeout(() => {
-      transitionToScene(currentSceneIndex + 1);
-    }, durationMs);
-  }
-}
-
-const pathStyle = document.createElement('style');
-pathStyle.textContent = '@keyframes path-draw { to { stroke-dashoffset: 0; } }';
-document.head.appendChild(pathStyle);
-
-function startPlayback(fromBeginning = false) {
-  audio.resume();
-  audio.startMusic();
-  isPlaying = true;
-  playOverlay.classList.add('hide');
-  iconPlay.style.display = 'none';
-  iconPause.style.display = 'block';
-
-  if (fromBeginning || currentSceneIndex >= S.length - 1) {
-    playbackStartTime = performance.now();
-    transitionToScene(0, true);
-  } else {
-    const currentElapsed = sceneStartTimes[currentSceneIndex];
-    playbackStartTime = performance.now() - (currentElapsed * 1000);
-    transitionToScene(currentSceneIndex, true);
-  }
-
-  cancelAnimationFrame(rafTicker);
-  tickProgress();
-  resetUiTimer();
-}
-
-function pausePlayback() {
-  isPlaying = false;
-  audio.stopMusic();
-  clearTimeout(sceneTimeout);
-  iconPlay.style.display = 'block';
-  iconPause.style.display = 'none';
-  cancelAnimationFrame(rafTicker);
-  playerUi.classList.remove('autohide');
-}
-
-function onPlaybackEnded() {
-  pausePlayback();
-  playOverlay.classList.remove('hide');
-  document.querySelector('.overlay-card h1').innerHTML = 'Watch Again? <span style="color:var(--gold)">SEÑAS</span>';
-  btnHeroPlay.innerHTML = `
-    <svg viewBox="0 0 24 24" style="width:2cqw;height:2cqw;fill:currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
-    Replay Promo
-  `;
-}
-
-function tickProgress() {
-  if (!isPlaying) return;
-  const elapsedSec = (performance.now() - playbackStartTime) / 1000;
-  const clamped = Math.min(totalDuration, Math.max(0, elapsedSec));
-  const pct = (clamped / totalDuration) * 100;
-  
-  scrubberFill.style.width = `${pct}%`;
-  scrubberHead.style.left = `${pct}%`;
-  timeCur.textContent = formatTime(clamped);
-
-  rafTicker = requestAnimationFrame(tickProgress);
-}
-
-// Scrubber Click & Jump
-scrubberBar.addEventListener('click', e => {
-  const rect = scrubberBar.getBoundingClientRect();
-  const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-  const targetTime = ratio * totalDuration;
-
-  let targetIndex = 0;
-  for (let i = sceneStartTimes.length - 1; i >= 0; i--) {
-    if (targetTime >= sceneStartTimes[i]) {
-      targetIndex = i;
-      break;
-    }
-  }
-
-  scrubberFill.style.width = `${ratio * 100}%`;
-  scrubberHead.style.left = `${ratio * 100}%`;
-  timeCur.textContent = formatTime(targetTime);
-  playbackStartTime = performance.now() - (targetTime * 1000);
-
-  transitionToScene(targetIndex, false);
-});
-
-function showToast(msg, duration = 3000) {
-  toast.textContent = msg;
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), duration);
-}
-
-// DOWNLOAD / EXPORT VIDEO HANDLER
-btnDownload.addEventListener('click', async () => {
-  showToast('🎬 Starting Ultra-Clear Video Export...');
-  
-  if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
-    try {
-      showToast('📹 Select this Tab to record & export high-resolution video...');
-      const stream = await navigator.mediaDevices.getDisplayMedia({
-        video: {
-          displaySurface: 'browser',
-          frameRate: { ideal: 60 }
-        },
-        audio: true
-      });
-
-      // Hide all overlays during recording
-      stageContainer.classList.add('clean-view');
-      playerUi.classList.add('autohide');
-
-      const recordedChunks = [];
-      const mediaRecorder = new MediaRecorder(stream, {
-        mimeType: MediaRecorder.isTypeSupported('video/webm;codecs=vp9')
-          ? 'video/webm;codecs=vp9'
-          : 'video/webm',
-        videoBitsPerSecond: 12000000
-      });
-
-      mediaRecorder.ondataavailable = e => {
-        if (e.data.size > 0) recordedChunks.push(e.data);
-      };
-
-      mediaRecorder.onstop = () => {
-        stageContainer.classList.remove('clean-view');
-        playerUi.classList.remove('autohide');
-        const blob = new Blob(recordedChunks, { type: 'video/webm' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'senas-commercial-promo.webm';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        showToast('✅ Video downloaded successfully!');
-      };
-
-      mediaRecorder.start();
-      startPlayback(true);
-
-      setTimeout(() => {
-        if (mediaRecorder.state === 'recording') {
-          mediaRecorder.stop();
-          stream.getTracks().forEach(track => track.stop());
+      if (paused) {
+        elapsedMs = seekMs + 150;
+        document.getAnimations().forEach(a => {
+          try { a.pause(); a.currentTime = Math.max(0, secInScene) * 1000; } catch(err){}
+        });
+      } else {
+        t0 = performance.now() - seekMs;
+        document.getAnimations().forEach(a => {
+          try { a.currentTime = Math.max(0, secInScene) * 1000; } catch(err){}
+        });
+        clearInterval(tmr);
+        tm.forEach(clearTimeout);
+        tm = [];
+        S.forEach((s, i) => {
+          if (i > curIdx) {
+            const dt = 150 + s.t * BT * 1000 - seekMs;
+            if (dt > 0) tm.push(setTimeout(() => build(i), dt));
+          }
+        });
+        const remEnd = 150 + TOT * BT * 1000 + 700 - seekMs;
+        if (remEnd > 0) {
+          tm.push(setTimeout(() => {
+            ui.classList.remove('hide');
+            document.getElementById('go').textContent = 'Replay';
+            clearInterval(tmr);
+            ppIcon.innerHTML = PLAY_ICON;
+            stage.classList.remove('playing');
+          }, remEnd));
         }
-      }, (totalDuration + 1) * 1000);
+        if (ac) {
+          nt = ac.currentTime + .05;
+          si = Math.max(0, Math.floor((seekMs / 1000) / (BT / 4)));
+          tmr = setInterval(sched, 40);
+        }
+      }
+    });
 
-    } catch (err) {
-      console.warn('Display capture cancelled or fallback:', err);
-      stageContainer.classList.remove('clean-view');
-      playerUi.classList.remove('autohide');
-    }
-  }
-});
+    /* Mute button */
+    document.getElementById('mute').onclick = () => {
+      on = !on;
+      if (mg) mg.gain.value = on ? .9 : 0;
+      document.getElementById('mute-icon').innerHTML = on
+        ? '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>'
+        : '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+    };
 
-// Controls Listeners
-btnHeroPlay.addEventListener('click', () => startPlayback(true));
+    /* Fullscreen button */
+    document.getElementById('fs-btn').onclick = () => {
+      const el = document.getElementById('stage');
+      if (!document.fullscreenElement) {
+        (el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen).call(el);
+        document.getElementById('fs-icon').innerHTML = '<path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>';
+      } else {
+        (document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen).call(document);
+        document.getElementById('fs-icon').innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+      }
+    };
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        document.getElementById('fs-icon').innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+      }
+    });
 
-btnPlay.addEventListener('click', () => {
-  if (isPlaying) pausePlayback();
-  else startPlayback(false);
-});
-
-btnPrev.addEventListener('click', () => {
-  transitionToScene(Math.max(0, currentSceneIndex - 1));
-});
-
-btnNext.addEventListener('click', () => {
-  transitionToScene(Math.min(S.length - 1, currentSceneIndex + 1));
-});
-
-btnMute.addEventListener('click', () => {
-  const isMuted = !audio.muted;
-  audio.setMuted(isMuted);
-  iconVolOn.style.display = isMuted ? 'none' : 'block';
-  iconVolOff.style.display = isMuted ? 'block' : 'none';
-});
-
-btnFullscreen.addEventListener('click', () => {
-  if (!document.fullscreenElement) {
-    stageContainer.requestFullscreen?.() || stageContainer.webkitRequestFullscreen?.();
-    stageContainer.classList.add('clean-view');
-  } else {
-    document.exitFullscreen?.() || document.webkitExitFullscreen?.();
-    stageContainer.classList.remove('clean-view');
-  }
-});
-
-document.addEventListener('fullscreenchange', () => {
-  if (!document.fullscreenElement) {
-    stageContainer.classList.remove('clean-view');
-  } else {
-    stageContainer.classList.add('clean-view');
-  }
-});
-
-btnCleanMode.addEventListener('click', () => {
-  isCleanMode = !isCleanMode;
-  stageContainer.classList.toggle('clean-view', isCleanMode);
-  btnCleanMode.textContent = isCleanMode ? '👁️ Show UI' : '👁️ Clean View';
-  if (isCleanMode) playerUi.classList.add('autohide');
-  else playerUi.classList.remove('autohide');
-});
-
-// Keyboard Shortcuts
-window.addEventListener('keydown', e => {
-  if (e.code === 'Space') {
-    e.preventDefault();
-    if (isPlaying) pausePlayback();
-    else startPlayback(false);
-  } else if (e.code === 'ArrowRight') {
-    transitionToScene(Math.min(S.length - 1, currentSceneIndex + 1));
-  } else if (e.code === 'ArrowLeft') {
-    transitionToScene(Math.max(0, currentSceneIndex - 1));
-  } else if (e.code === 'KeyM') {
-    btnMute.click();
-  } else if (e.code === 'KeyF') {
-    btnFullscreen.click();
-  } else if (e.code === 'KeyC') {
-    btnCleanMode.click();
-  }
-});
-
-function resetUiTimer() {
-  if (!isCleanMode) playerUi.classList.remove('autohide');
-  clearTimeout(uiHideTimer);
-  if (isPlaying) {
-    uiHideTimer = setTimeout(() => {
-      playerUi.classList.add('autohide');
-    }, 1800);
-  }
-}
-stageContainer.addEventListener('mousemove', resetUiTimer);
-stageContainer.addEventListener('touchstart', resetUiTimer);
-
-transitionToScene(0, true);
-</script>
+    window.__at = (i, sec) => {
+      SC.innerHTML = '';
+      ui.classList.add('hide');
+      build(i, 1);
+      document.getAnimations().forEach(a => {
+        a.pause();
+        a.currentTime = sec * 1000;
+      });
+    };
+  </script>
 </body>
+
 </html>
